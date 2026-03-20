@@ -106,25 +106,25 @@ export default function PublicSite() {
         }}
       >
         <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-2 md:pb-3" style={{transform: 'translateY(0)'}}>
-          <h1 className="font-serif text-6xl md:text-8xl font-bold leading-tight mb-2 text-gradient-gold whitespace-nowrap">
+          <h1 className="font-serif text-7xl md:text-9xl font-bold leading-tight mb-2 text-gradient-gold whitespace-nowrap">
             {heroTitle}
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-3" />
-          <p className="font-body italic text-2xl md:text-3xl text-cream-dim mb-2">{heroSubtitle}</p>
-          <p className="font-body text-cream-dim/70 text-base max-w-xl mx-auto mb-5 italic hidden md:block">"{heroQuote}"</p>
+          <p className="font-body italic text-3xl md:text-4xl text-cream-dim mb-2">{heroSubtitle}</p>
+          <p className="font-body text-cream-dim/70 text-lg max-w-xl mx-auto mb-5 italic hidden md:block">"{heroQuote}"</p>
           <div className="flex flex-wrap gap-3 justify-center mb-6">
-            <a href="#album" className="px-6 py-2 bg-gold text-black font-mono text-sm font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
+            <a href="#album" className="px-6 py-2 bg-gold text-black font-mono text-base font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
               {t("Discover the Album", "Das Album entdecken")}
             </a>
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="px-6 py-2 border border-gold/50 text-gold font-mono text-sm font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
+                className="px-6 py-2 border border-gold/50 text-gold font-mono text-base font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
                 {t("Listen on Spotify", "Auf Spotify hören")}
               </a>
             ))}
           </div>
           <div className="animate-bounce pb-1">
-            <span className="font-mono text-sm text-gold/40 tracking-widest">{t("SCROLL", "SCROLLEN")}</span>
+            <span className="font-mono text-base text-gold/40 tracking-widest">{t("SCROLL", "SCROLLEN")}</span>
             <div className="w-px h-8 bg-gold/20 mx-auto mt-1" />
           </div>
         </div>
