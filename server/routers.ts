@@ -140,10 +140,10 @@ export const appRouter = router({
         countryEn: z.string(),
         countryDe: z.string(),
         region: z.enum(["germany", "europe", "india", "other"]).default("germany"),
-        eventUrl: z.string().optional(),
+        eventUrl: z.string().nullish(),
         sortOrder: z.number().default(0),
       }))
-      .mutation(({ input }) => upsertTourDate(input)),
+      .mutation(({ input }) => upsertTourDate({ ...input, eventUrl: input.eventUrl ?? undefined })),
 
     deleteTourDate: adminProcedure
       .input(z.object({ id: z.number() }))
