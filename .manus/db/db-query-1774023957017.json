@@ -1,0 +1,115 @@
+{
+  "query": "SELECT `key`, lang, LEFT(value, 50) as preview FROM site_content ORDER BY `key`, lang;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT `key`, lang, LEFT(value, 50) as preview FROM site_content ORDER BY `key`, lang;",
+  "rows": [
+    {
+      "key": "album_cover_url",
+      "lang": "en",
+      "preview": "https://files.manuscdn.com/user_upload_by_module/s"
+    },
+    {
+      "key": "album_description",
+      "lang": "en",
+      "preview": "Essence of Duality is the debut crossover jazz alb"
+    },
+    {
+      "key": "album_description",
+      "lang": "de",
+      "preview": "Essence of Duality ist das Debüt-Crossover-Jazz-Al"
+    },
+    {
+      "key": "album_label",
+      "lang": "en",
+      "preview": "Medieval Raga Records"
+    },
+    {
+      "key": "album_label",
+      "lang": "de",
+      "preview": "Medieval Raga Records"
+    },
+    {
+      "key": "album_release",
+      "lang": "en",
+      "preview": "1 October 2021"
+    },
+    {
+      "key": "album_release",
+      "lang": "de",
+      "preview": "1. Oktober 2021"
+    },
+    {
+      "key": "artist_bio",
+      "lang": "en",
+      "preview": "Hindol Deb is an internationally renowned Indian c"
+    },
+    {
+      "key": "artist_bio",
+      "lang": "de",
+      "preview": "Hindol Deb ist ein international renommierter indi"
+    },
+    {
+      "key": "artist_portrait_url",
+      "lang": "en",
+      "preview": "https://files.manuscdn.com/user_upload_by_module/s"
+    },
+    {
+      "key": "artist_quote",
+      "lang": "en",
+      "preview": "It began with the duality of two musical styles. O"
+    },
+    {
+      "key": "artist_quote",
+      "lang": "de",
+      "preview": "Es begann mit der Dualität zweier Musikstile. Eine"
+    },
+    {
+      "key": "hero_bg_url",
+      "lang": "en",
+      "preview": "https://files.manuscdn.com/user_upload_by_module/s"
+    },
+    {
+      "key": "hero_quote",
+      "lang": "en",
+      "preview": "An exploration of the space between Indian classic"
+    },
+    {
+      "key": "hero_quote",
+      "lang": "de",
+      "preview": "Eine Erkundung des Raums zwischen indischer klassi"
+    },
+    {
+      "key": "hero_subtitle",
+      "lang": "en",
+      "preview": "Where Raga Meets Jazz"
+    },
+    {
+      "key": "hero_subtitle",
+      "lang": "de",
+      "preview": "Wo Raga auf Jazz trifft"
+    },
+    {
+      "key": "hero_title",
+      "lang": "en",
+      "preview": "Essence of Duality"
+    },
+    {
+      "key": "hero_title",
+      "lang": "de",
+      "preview": "Essence of Duality"
+    },
+    {
+      "key": "ragas_intro",
+      "lang": "en",
+      "preview": "Each composition on the album is rooted in a speci"
+    },
+    {
+      "key": "ragas_intro",
+      "lang": "de",
+      "preview": "Jede Komposition auf dem Album ist in einem bestim"
+    }
+  ],
+  "messages": [],
+  "stdout": "key\tlang\tpreview\nalbum_cover_url\ten\thttps://files.manuscdn.com/user_upload_by_module/s\nalbum_description\ten\tEssence of Duality is the debut crossover jazz alb\nalbum_description\tde\tEssence of Duality ist das Debüt-Crossover-Jazz-Al\nalbum_label\ten\tMedieval Raga Records\nalbum_label\tde\tMedieval Raga Records\nalbum_release\ten\t1 October 2021\nalbum_release\tde\t1. Oktober 2021\nartist_bio\ten\tHindol Deb is an internationally renowned Indian c\nartist_bio\tde\tHindol Deb ist ein international renommierter indi\nartist_portrait_url\ten\thttps://files.manuscdn.com/user_upload_by_module/s\nartist_quote\ten\tIt began with the duality of two musical styles. O\nartist_quote\tde\tEs begann mit der Dualität zweier Musikstile. Eine\nhero_bg_url\ten\thttps://files.manuscdn.com/user_upload_by_module/s\nhero_quote\ten\tAn exploration of the space between Indian classic\nhero_quote\tde\tEine Erkundung des Raums zwischen indischer klassi\nhero_subtitle\ten\tWhere Raga Meets Jazz\nhero_subtitle\tde\tWo Raga auf Jazz trifft\nhero_title\ten\tEssence of Duality\nhero_title\tde\tEssence of Duality\nragas_intro\ten\tEach composition on the album is rooted in a speci\nragas_intro\tde\tJede Komposition auf dem Album ist in einem bestim\n",
+  "stderr": "",
+  "execution_time_ms": 82
+}

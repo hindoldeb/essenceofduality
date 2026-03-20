@@ -1,0 +1,70 @@
+{
+  "query": "SELECT `key`, lang, LEFT(value, 60) as value_preview FROM site_content ORDER BY `key`, lang;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT `key`, lang, LEFT(value, 60) as value_preview FROM site_content ORDER BY `key`, lang;",
+  "rows": [
+    {
+      "key": "album_cover_url",
+      "lang": "en",
+      "value_preview": "https://files.manuscdn.com/user_upload_by_module/session_fil"
+    },
+    {
+      "key": "album_description",
+      "lang": "en",
+      "value_preview": "Essence of Duality ist das Debüt-Crossover-Jazz-Album des in"
+    },
+    {
+      "key": "album_label",
+      "lang": "en",
+      "value_preview": "Medieval Raga Records"
+    },
+    {
+      "key": "album_release",
+      "lang": "en",
+      "value_preview": "1. Oktober 2021"
+    },
+    {
+      "key": "artist_bio",
+      "lang": "en",
+      "value_preview": "Hindol Deb ist ein international renommierter indischer klas"
+    },
+    {
+      "key": "artist_portrait_url",
+      "lang": "en",
+      "value_preview": "https://files.manuscdn.com/user_upload_by_module/session_fil"
+    },
+    {
+      "key": "artist_quote",
+      "lang": "en",
+      "value_preview": "Es begann mit der Dualität zweier Musikstile. Einerseits mei"
+    },
+    {
+      "key": "hero_bg_url",
+      "lang": "en",
+      "value_preview": "https://files.manuscdn.com/user_upload_by_module/session_fil"
+    },
+    {
+      "key": "hero_quote",
+      "lang": "en",
+      "value_preview": "Eine Erkundung des Raums zwischen indischer klassischer Musi"
+    },
+    {
+      "key": "hero_subtitle",
+      "lang": "en",
+      "value_preview": "Wo Raga auf Jazz trifft"
+    },
+    {
+      "key": "hero_title",
+      "lang": "en",
+      "value_preview": "Essence of Duality"
+    },
+    {
+      "key": "ragas_intro",
+      "lang": "en",
+      "value_preview": "Jede Komposition auf dem Album ist in einem bestimmten Raga "
+    }
+  ],
+  "messages": [],
+  "stdout": "key\tlang\tvalue_preview\nalbum_cover_url\ten\thttps://files.manuscdn.com/user_upload_by_module/session_fil\nalbum_description\ten\tEssence of Duality ist das Debüt-Crossover-Jazz-Album des in\nalbum_label\ten\tMedieval Raga Records\nalbum_release\ten\t1. Oktober 2021\nartist_bio\ten\tHindol Deb ist ein international renommierter indischer klas\nartist_portrait_url\ten\thttps://files.manuscdn.com/user_upload_by_module/session_fil\nartist_quote\ten\tEs begann mit der Dualität zweier Musikstile. Einerseits mei\nhero_bg_url\ten\thttps://files.manuscdn.com/user_upload_by_module/session_fil\nhero_quote\ten\tEine Erkundung des Raums zwischen indischer klassischer Musi\nhero_subtitle\ten\tWo Raga auf Jazz trifft\nhero_title\ten\tEssence of Duality\nragas_intro\ten\tJede Komposition auf dem Album ist in einem bestimmten Raga \n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

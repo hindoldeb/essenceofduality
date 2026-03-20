@@ -57,3 +57,4 @@
 ## Bug Fixes
 - [x] Fix admin routing 404 bug (wouter nest path doubling — switched to flat absolute routes)
 - [x] Remove hero background image upload from admin Site Content and public hero section
+- [x] Fix language toggle — DE button does not switch site to German

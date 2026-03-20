@@ -5,6 +5,7 @@ import {
   mysqlTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
 
@@ -27,11 +28,11 @@ export type InsertUser = typeof users.$inferInsert;
 // ─── Site Settings (hero, album description, artist bio) ─────────────────────
 export const siteContent = mysqlTable("site_content", {
   id: int("id").autoincrement().primaryKey(),
-  key: varchar("key", { length: 128 }).notNull().unique(), // e.g. "hero_title", "album_description"
+  key: varchar("key", { length: 128 }).notNull(), // e.g. "hero_title", "album_description"
   lang: mysqlEnum("lang", ["en", "de"]).notNull(),
   value: text("value").notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-});
+}, (t) => [uniqueIndex("site_content_key_lang_unique").on(t.key, t.lang)]);
 
 // ─── Tracks ───────────────────────────────────────────────────────────────────
 export const tracks = mysqlTable("tracks", {
