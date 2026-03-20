@@ -98,31 +98,31 @@ export default function PublicSite() {
           ? `linear-gradient(to bottom, rgba(5,4,2,0.20) 0%, rgba(5,4,2,0.45) 55%, rgba(5,4,2,0.92) 100%), url(${heroBg}) center/cover no-repeat`
           : `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)` }}
       >
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-10 md:pb-14">
-          <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-8">
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-6">
+          <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-2">
             {t("Hindol Deb Quartet · Cologne, Germany · 2021", "Hindol Deb Quartett · Köln, Deutschland · 2021")}
           </p>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-4 text-gradient-gold">
+          <h1 className="font-serif text-4xl md:text-6xl font-bold leading-tight mb-2 text-gradient-gold">
             {heroTitle.split(" of ")[0]}<br />
             <span className="italic">of {heroTitle.split(" of ")[1]}</span>
           </h1>
-          <div className="w-16 h-px bg-gold/40 mx-auto my-6" />
-          <p className="font-body italic text-2xl md:text-3xl text-cream-dim mb-8">{heroSubtitle}</p>
-          <p className="font-body text-cream-dim/80 text-lg max-w-xl mx-auto mb-10 italic">"{heroQuote}"</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="#album" className="px-8 py-3 bg-gold text-black font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
+          <div className="w-12 h-px bg-gold/40 mx-auto my-3" />
+          <p className="font-body italic text-xl md:text-2xl text-cream-dim mb-2">{heroSubtitle}</p>
+          <p className="font-body text-cream-dim/70 text-sm max-w-xl mx-auto mb-4 italic hidden md:block">"{heroQuote}"</p>
+          <div className="flex flex-wrap gap-3 justify-center mb-4">
+            <a href="#album" className="px-6 py-2 bg-gold text-black font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
               {t("Discover the Album", "Das Album entdecken")}
             </a>
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="px-8 py-3 border border-gold/50 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
+                className="px-6 py-2 border border-gold/50 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
                 {t("Listen on Spotify", "Auf Spotify hören")}
               </a>
             ))}
           </div>
-          <div className="mt-16 animate-bounce">
+          <div className="animate-bounce">
             <span className="font-mono text-xs text-gold/40 tracking-widest">{t("SCROLL", "SCROLLEN")}</span>
-            <div className="w-px h-12 bg-gold/20 mx-auto mt-2" />
+            <div className="w-px h-8 bg-gold/20 mx-auto mt-1" />
           </div>
         </div>
       </section>

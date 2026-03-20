@@ -62,3 +62,4 @@
 - [x] Make hero overlay more transparent, reduce h1 size, push title lower
 - [x] Push hero headline and all text further down toward the bottom of the hero section
 - [x] Anchor all hero text to the very bottom of the hero viewport (currently drifting upward)
+- [x] Compact hero text block — reduce spacing so entire block fits in bottom third without clipping
