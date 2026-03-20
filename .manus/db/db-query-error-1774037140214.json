@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, track_number, title_en, raga_en, duration FROM tracks ORDER BY track_number;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT id, track_number, title_en, raga_en, duration FROM tracks ORDER BY track_number;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'track_number' in 'field list'"
+  ]
+}

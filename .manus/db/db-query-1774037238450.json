@@ -1,0 +1,55 @@
+{
+  "query": "SELECT id, ragaName, trackTitleEn FROM raga_descriptions ORDER BY sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT id, ragaName, trackTitleEn FROM raga_descriptions ORDER BY sortOrder;",
+  "rows": [
+    {
+      "id": "1",
+      "ragaName": "Raga Bhairav",
+      "trackTitleEn": "Duality"
+    },
+    {
+      "id": "2",
+      "ragaName": "Raga Yaman",
+      "trackTitleEn": "Longing"
+    },
+    {
+      "id": "3",
+      "ragaName": "Raga Kafi",
+      "trackTitleEn": "Conversation"
+    },
+    {
+      "id": "4",
+      "ragaName": "Raga Bairagi",
+      "trackTitleEn": "Awakening"
+    },
+    {
+      "id": "5",
+      "ragaName": "Raga Bhimpalasi",
+      "trackTitleEn": "The Bridge"
+    },
+    {
+      "id": "6",
+      "ragaName": "Raga Chandrakauns",
+      "trackTitleEn": "Reflection"
+    },
+    {
+      "id": "7",
+      "ragaName": "Raga Bhupali",
+      "trackTitleEn": "Wanderer"
+    },
+    {
+      "id": "8",
+      "ragaName": "Raga Darbari Kanada",
+      "trackTitleEn": "Surrender"
+    },
+    {
+      "id": "9",
+      "ragaName": "Raga Bhairavi",
+      "trackTitleEn": "Essence"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tragaName\ttrackTitleEn\n1\tRaga Bhairav\tDuality\n2\tRaga Yaman\tLonging\n3\tRaga Kafi\tConversation\n4\tRaga Bairagi\tAwakening\n5\tRaga Bhimpalasi\tThe Bridge\n6\tRaga Chandrakauns\tReflection\n7\tRaga Bhupali\tWanderer\n8\tRaga Darbari Kanada\tSurrender\n9\tRaga Bhairavi\tEssence\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

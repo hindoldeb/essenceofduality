@@ -73,3 +73,4 @@
 - [x] Hero: remove SCROLL text, increase subtitle/quote/buttons by 10pt, place buttons side-by-side (left/right)
 - [x] Hero: increase subtitle/quote/button text by another 10pt (third round)
 - [x] Hero: reduce title (Essence of Duality) by 10pt — text-7xl/9xl → text-6xl/8xl
+- [x] Sync all text content from hindoldeb.github.io/essence-of-duality reference page into CMS database

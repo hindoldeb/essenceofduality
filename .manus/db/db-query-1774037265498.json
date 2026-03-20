@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, dateStr, venueEn, cityEn, countryEn, region FROM tour_dates ORDER BY sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT id, dateStr, venueEn, cityEn, countryEn, region FROM tour_dates ORDER BY sortOrder;",
+  "rows": [
+    {
+      "id": "10",
+      "dateStr": "Oct 2023",
+      "venueEn": "Goethe-Institut New Delhi",
+      "cityEn": "New Delhi",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "9",
+      "dateStr": "Oct 2023",
+      "venueEn": "Goethe-Institut Chennai",
+      "cityEn": "Chennai",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "8",
+      "dateStr": "Oct 2023",
+      "venueEn": "Goethe-Institut Kolkata",
+      "cityEn": "Kolkata",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "7",
+      "dateStr": "Oct 2023",
+      "venueEn": "Bangalore International Centre",
+      "cityEn": "Bangalore",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "6",
+      "dateStr": "Oct 2023",
+      "venueEn": "Poona Music Society",
+      "cityEn": "Pune",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "5",
+      "dateStr": "Oct 2023",
+      "venueEn": "Goethe-Institut Pune",
+      "cityEn": "Pune",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "4",
+      "dateStr": "Oct 2023",
+      "venueEn": "Goethe-Institut Mumbai",
+      "cityEn": "Mumbai",
+      "countryEn": "India",
+      "region": "india"
+    },
+    {
+      "id": "3",
+      "dateStr": "2022",
+      "venueEn": "Jazzhaus Freiburg",
+      "cityEn": "Freiburg",
+      "countryEn": "Germany",
+      "region": "germany"
+    },
+    {
+      "id": "2",
+      "dateStr": "2021",
+      "venueEn": "Stadtgarten Köln",
+      "cityEn": "Cologne",
+      "countryEn": "Germany",
+      "region": "germany"
+    },
+    {
+      "id": "1",
+      "dateStr": "Nov 21, 2021",
+      "venueEn": "DUMONT Aachen",
+      "cityEn": "Aachen",
+      "countryEn": "Germany",
+      "region": "germany"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tdateStr\tvenueEn\tcityEn\tcountryEn\tregion\n10\tOct 2023\tGoethe-Institut New Delhi\tNew Delhi\tIndia\tindia\n9\tOct 2023\tGoethe-Institut Chennai\tChennai\tIndia\tindia\n8\tOct 2023\tGoethe-Institut Kolkata\tKolkata\tIndia\tindia\n7\tOct 2023\tBangalore International Centre\tBangalore\tIndia\tindia\n6\tOct 2023\tPoona Music Society\tPune\tIndia\tindia\n5\tOct 2023\tGoethe-Institut Pune\tPune\tIndia\tindia\n4\tOct 2023\tGoethe-Institut Mumbai\tMumbai\tIndia\tindia\n3\t2022\tJazzhaus Freiburg\tFreiburg\tGermany\tgermany\n2\t2021\tStadtgarten Köln\tCologne\tGermany\tgermany\n1\tNov 21, 2021\tDUMONT Aachen\tAachen\tGermany\tgermany\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

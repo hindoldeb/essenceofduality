@@ -1,0 +1,38 @@
+{
+  "query": "SELECT id, publicationEn, reviewerEn, dateEn, rating FROM press_reviews ORDER BY sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT id, publicationEn, reviewerEn, dateEn, rating FROM press_reviews ORDER BY sortOrder;",
+  "rows": [
+    {
+      "id": "1",
+      "publicationEn": "Qantara.de",
+      "reviewerEn": "Arno Lücker",
+      "dateEn": "2021",
+      "rating": "4"
+    },
+    {
+      "id": "2",
+      "publicationEn": "Songlines Magazine",
+      "reviewerEn": "Songlines",
+      "dateEn": "2021",
+      "rating": "3"
+    },
+    {
+      "id": "3",
+      "publicationEn": "DUMONT Aachen",
+      "reviewerEn": "DUMONT",
+      "dateEn": "November 2021",
+      "rating": "5"
+    },
+    {
+      "id": "4",
+      "publicationEn": "Poona Music Society",
+      "reviewerEn": "Poona Music Society",
+      "dateEn": "2023",
+      "rating": "5"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpublicationEn\treviewerEn\tdateEn\trating\n1\tQantara.de\tArno Lücker\t2021\t4\n2\tSonglines Magazine\tSonglines\t2021\t3\n3\tDUMONT Aachen\tDUMONT\tNovember 2021\t5\n4\tPoona Music Society\tPoona Music Society\t2023\t5\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

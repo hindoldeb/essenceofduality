@@ -1,0 +1,82 @@
+{
+  "query": "SELECT id, trackNumber, titleEn, ragaEn, subtitleEn, duration FROM tracks ORDER BY trackNumber;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT id, trackNumber, titleEn, ragaEn, subtitleEn, duration FROM tracks ORDER BY trackNumber;",
+  "rows": [
+    {
+      "id": "1",
+      "trackNumber": "1",
+      "titleEn": "Duality",
+      "ragaEn": "Raga Bhairav",
+      "subtitleEn": "Morning Raga",
+      "duration": "7:42"
+    },
+    {
+      "id": "2",
+      "trackNumber": "2",
+      "titleEn": "Longing",
+      "ragaEn": "Raga Yaman",
+      "subtitleEn": "Evening Raga",
+      "duration": "8:15"
+    },
+    {
+      "id": "3",
+      "trackNumber": "3",
+      "titleEn": "Conversation",
+      "ragaEn": "Raga Kafi",
+      "subtitleEn": "Monsoon Raga",
+      "duration": "6:53"
+    },
+    {
+      "id": "4",
+      "trackNumber": "4",
+      "titleEn": "Awakening",
+      "ragaEn": "Raga Bairagi",
+      "subtitleEn": "Dawn Raga",
+      "duration": "9:04"
+    },
+    {
+      "id": "5",
+      "trackNumber": "5",
+      "titleEn": "The Bridge",
+      "ragaEn": "Raga Bhimpalasi",
+      "subtitleEn": "Afternoon Raga",
+      "duration": "7:28"
+    },
+    {
+      "id": "6",
+      "trackNumber": "6",
+      "titleEn": "Reflection",
+      "ragaEn": "Raga Chandrakauns",
+      "subtitleEn": "Night Raga",
+      "duration": "8:36"
+    },
+    {
+      "id": "7",
+      "trackNumber": "7",
+      "titleEn": "Wanderer",
+      "ragaEn": "Raga Bhupali",
+      "subtitleEn": "Pentatonic Raga",
+      "duration": "6:19"
+    },
+    {
+      "id": "8",
+      "trackNumber": "8",
+      "titleEn": "Surrender",
+      "ragaEn": "Raga Darbari Kanada",
+      "subtitleEn": "Late Night Raga",
+      "duration": "10:12"
+    },
+    {
+      "id": "9",
+      "trackNumber": "9",
+      "titleEn": "Essence",
+      "ragaEn": "Raga Bhairavi",
+      "subtitleEn": "Farewell Raga",
+      "duration": "9:47"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttrackNumber\ttitleEn\tragaEn\tsubtitleEn\tduration\n1\t1\tDuality\tRaga Bhairav\tMorning Raga\t7:42\n2\t2\tLonging\tRaga Yaman\tEvening Raga\t8:15\n3\t3\tConversation\tRaga Kafi\tMonsoon Raga\t6:53\n4\t4\tAwakening\tRaga Bairagi\tDawn Raga\t9:04\n5\t5\tThe Bridge\tRaga Bhimpalasi\tAfternoon Raga\t7:28\n6\t6\tReflection\tRaga Chandrakauns\tNight Raga\t8:36\n7\t7\tWanderer\tRaga Bhupali\tPentatonic Raga\t6:19\n8\t8\tSurrender\tRaga Darbari Kanada\tLate Night Raga\t10:12\n9\t9\tEssence\tRaga Bhairavi\tFarewell Raga\t9:47\n",
+  "stderr": "",
+  "execution_time_ms": 73
+}
