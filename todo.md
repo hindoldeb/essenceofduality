@@ -71,3 +71,4 @@
 - [x] Hero: increase all text sizes (subtitle, quote, buttons, SCROLL) by 10pt
 - [x] Hero: increase all text sizes by another 10pt (second round)
 - [x] Hero: remove SCROLL text, increase subtitle/quote/buttons by 10pt, place buttons side-by-side (left/right)
+- [x] Hero: increase subtitle/quote/button text by another 10pt (third round)
