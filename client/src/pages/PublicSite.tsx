@@ -118,7 +118,7 @@ export default function PublicSite() {
             </a>
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="px-8 py-3 border border-gold/50 text-gold font-mono text-xl font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
+                className="px-6 py-2 border border-gold/50 text-gold font-mono text-sm font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
                 {t("Listen on Spotify", "Auf Spotify hören")}
               </a>
             ))}
