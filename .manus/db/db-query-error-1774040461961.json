@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE site_content SET value_en = 'Hindol Deb Quartet', value_de = 'Hindol Deb Quartett' WHERE key_name = 'hero_title';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute UPDATE site_content SET value_en = 'Hindol Deb Quartet', value_de = 'Hindol Deb Quartett' WHERE key_name = 'hero_title';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'key_name' in 'where clause'"
+  ]
+}

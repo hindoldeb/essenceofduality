@@ -1,0 +1,24 @@
+{
+  "query": "SELECT * FROM site_content WHERE `key` = 'hero_title';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT * FROM site_content WHERE `key` = 'hero_title';",
+  "rows": [
+    {
+      "id": "1",
+      "key": "hero_title",
+      "lang": "en",
+      "value": "Hindol Deb Quartet",
+      "updatedAt": "2026-03-20 21:01:10"
+    },
+    {
+      "id": "40",
+      "key": "hero_title",
+      "lang": "de",
+      "value": "Hindol Deb Quartett",
+      "updatedAt": "2026-03-20 21:01:10"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tkey\tlang\tvalue\tupdatedAt\n1\thero_title\ten\tHindol Deb Quartet\t2026-03-20 21:01:10\n40\thero_title\tde\tHindol Deb Quartett\t2026-03-20 21:01:10\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

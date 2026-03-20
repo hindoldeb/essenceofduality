@@ -229,7 +229,7 @@ export default function PublicSite() {
             <div className="w-12 h-px bg-gold/40 mx-auto mb-16" />
             <div className="grid md:grid-cols-2 gap-8">
               {musicians.map((m) => (
-                <div key={m.id} className="flex gap-6 p-6 border border-gold-60 hover:border-gold transition-all bg-black/20">
+                <div key={m.id} className="flex gap-6 p-6 border border-gold-30 hover:border-gold transition-all bg-black/20">
                   {m.imageUrl && (
                     <img src={m.imageUrl} alt={lang === "de" ? m.nameDe : m.nameEn}
                       className="w-20 h-20 object-cover shrink-0 grayscale hover:grayscale-0 transition-all" />
