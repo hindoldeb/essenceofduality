@@ -450,9 +450,8 @@ export default function PublicSite() {
             </div>
           </div>
           {/* Copyright bar */}
-          <div className="border-t border-gold/15 py-5 flex flex-col md:flex-row justify-between gap-2">
+          <div className="border-t border-gold/15 py-5 text-center">
             <p className="font-mono text-xs text-cream-dim/30">© 2021 Hindol Deb · Medieval Raga Records · All rights reserved</p>
-            <p className="font-mono text-xs text-cream-dim/30">Webpage compiled from public sources for informational purposes</p>
           </div>
         </div>
       </footer>
