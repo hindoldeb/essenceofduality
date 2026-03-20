@@ -96,7 +96,7 @@ export default function PublicSite() {
         className="relative overflow-hidden"
         style={heroBg ? {
           height: '100vh',
-          backgroundImage: `linear-gradient(to bottom, rgba(5,4,2,0.05) 0%, rgba(5,4,2,0.30) 55%, rgba(5,4,2,0.90) 100%), url(${heroBg})`,
+          backgroundImage: `linear-gradient(to bottom, rgba(5,4,2,0.45) 0%, rgba(5,4,2,0.60) 50%, rgba(5,4,2,0.92) 100%), url(${heroBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 5%',
           backgroundRepeat: 'no-repeat',
