@@ -357,34 +357,37 @@ export default function PublicSite() {
         </section>
       )}
 
-      {/* ── Artist Bio ── */}
-      {isSectionVisible("bio") && (
-        <section id="bio" className="py-24 px-6 section-divider" style={{background:'oklch(0.06 0.005 60)'}}>
-          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 items-center">
-            {/* Portrait — left, vertically centered */}
-            <div className="md:col-span-1 flex justify-center">
-              <img
-                src={gc("artist_portrait_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/aIncuEcaLDGVmvny.jpg"}
-                alt="Hindol Deb"
-                className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-            {/* Text — right two columns */}
-            <div className="md:col-span-2">
-              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Artist", "Der Künstler")}</p>
-              <h2 className="font-serif text-4xl font-bold text-cream mb-4">Hindol Deb</h2>
-              <div className="w-10 h-px bg-gold mb-6" />
-              <div className="text-cream-dim leading-relaxed space-y-4 text-lg">
-                {artistBio.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
-              </div>
-              <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-8 font-mono text-xs text-gold/70 hover:text-gold border-b border-gold/30 hover:border-gold transition-all pb-0.5">
-                hindoldeb.com ↗
-              </a>
-            </div>
+      {/* ── Photo Gallery ── */}
+      <section id="gallery" className="py-24 px-6 section-divider" style={{background:'oklch(0.06 0.005 60)'}}>
+        <div className="max-w-5xl mx-auto">
+          <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Gallery", "Galerie")}</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+            {t("In the Studio & On Stage", "Im Studio & auf der Bühne")}
+          </h2>
+          <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[1,2,3,4,5,6].map((n) => {
+              const url = gc(`gallery_photo_${n}`);
+              return url ? (
+                <div key={n} className="relative w-full overflow-hidden border border-gold-15 hover:border-gold transition-all duration-500 group" style={{paddingBottom:'75%'}}>
+                  <img
+                    src={url}
+                    alt={`Gallery photo ${n}`}
+                    className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+              ) : (
+                <div key={n} className="relative w-full border border-dashed border-gold-30 hover:border-gold-60 transition-colors" style={{paddingBottom:'75%'}}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-gold/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <span className="font-mono text-xs tracking-widest uppercase opacity-50">Photo {n}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* ── Tour Dates ── */}
       {isSectionVisible("tour") && tourDates.length > 0 && (

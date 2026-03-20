@@ -21,6 +21,12 @@ const imageFields = [
   { key: "album_cover_url", label: "Album Cover" },
   { key: "artist_portrait_url", label: "Artist Portrait" },
   { key: "quote_image_url", label: "Quote Section Photo" },
+  { key: "gallery_photo_1", label: "Gallery Photo 1" },
+  { key: "gallery_photo_2", label: "Gallery Photo 2" },
+  { key: "gallery_photo_3", label: "Gallery Photo 3" },
+  { key: "gallery_photo_4", label: "Gallery Photo 4" },
+  { key: "gallery_photo_5", label: "Gallery Photo 5" },
+  { key: "gallery_photo_6", label: "Gallery Photo 6" },
 ];
 
 export default function AdminContent() {
