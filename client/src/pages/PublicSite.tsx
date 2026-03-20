@@ -93,16 +93,16 @@ export default function PublicSite() {
 
       {/* ── Hero ── */}
       <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-end justify-center overflow-hidden"
         style={{ background: heroBg
-          ? `linear-gradient(to bottom, rgba(5,4,2,0.55) 0%, rgba(5,4,2,0.75) 60%, rgba(5,4,2,1) 100%), url(${heroBg}) center/cover no-repeat`
+          ? `linear-gradient(to bottom, rgba(5,4,2,0.20) 0%, rgba(5,4,2,0.45) 55%, rgba(5,4,2,0.92) 100%), url(${heroBg}) center/cover no-repeat`
           : `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)` }}
       >
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-24 md:pb-32">
           <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-8">
             {t("Hindol Deb Quartet · Cologne, Germany · 2021", "Hindol Deb Quartett · Köln, Deutschland · 2021")}
           </p>
-          <h1 className="font-serif text-7xl md:text-9xl font-bold leading-none mb-4 text-gradient-gold">
+          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-4 text-gradient-gold">
             {heroTitle.split(" of ")[0]}<br />
             <span className="italic">of {heroTitle.split(" of ")[1]}</span>
           </h1>

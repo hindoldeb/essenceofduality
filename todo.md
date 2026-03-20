@@ -59,3 +59,4 @@
 - [x] Remove hero background image upload from admin Site Content and public hero section
 - [x] Fix language toggle — DE button does not switch site to German
 - [x] Re-add hero background image upload to Admin Site Content and restore hero background in public site
+- [x] Make hero overlay more transparent, reduce h1 size, push title lower
