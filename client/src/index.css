@@ -152,6 +152,9 @@
   .text-cream { color: var(--cream); }
   .text-cream-dim { color: var(--cream-dim); }
   .border-gold { border-color: var(--gold); }
+  .border-gold-60 { border-color: oklch(0.72 0.14 70 / 0.60); }
+  .border-gold-50 { border-color: oklch(0.72 0.14 70 / 0.50); }
+  .border-gold-30 { border-color: oklch(0.72 0.14 70 / 0.30); }
   .bg-warm-black { background-color: var(--warm-black); }
   .bg-charcoal { background-color: var(--charcoal); }
   .font-serif { font-family: "Playfair Display", Georgia, serif; }
