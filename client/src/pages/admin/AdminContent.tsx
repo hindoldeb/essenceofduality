@@ -17,6 +17,7 @@ const contentFields = [
 ];
 
 const imageFields = [
+  { key: "hero_bg_url", label: "Hero Background Image" },
   { key: "album_cover_url", label: "Album Cover" },
   { key: "artist_portrait_url", label: "Artist Portrait" },
 ];
