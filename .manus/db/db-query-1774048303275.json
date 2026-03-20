@@ -1,0 +1,24 @@
+{
+  "query": "SELECT * FROM site_content WHERE `key` = 'album_description';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT * FROM site_content WHERE `key` = 'album_description';",
+  "rows": [
+    {
+      "id": "7",
+      "key": "album_description",
+      "lang": "en",
+      "value": "Essence of Duality is the debut crossover jazz album by Cologne-based sitarist Hindol Deb. The album explores and crosses the boundaries of jazz and Indian classical music, making aesthetic connections between the two. It is a sincere attempt to move beyond the exotic yet stereotypical image of the sitar in the West, and of Indo-Jazz fusion in particular. The album is the logical result of Hindol's move to Germany in 2015, in search of new sounds and compositional styles.",
+      "updatedAt": "2026-03-20 20:05:36"
+    },
+    {
+      "id": "43",
+      "key": "album_description",
+      "lang": "de",
+      "value": "Essence of Duality ist das Debüt-Crossover-Jazz-Album des in Köln lebenden Sitaristen Hindol Deb, das am 1. Oktober 2021 über Medieval Raga Records veröffentlicht wurde. Das Album erkundet und überschreitet die Grenzen von Jazz und indischer klassischer Musik. In Köln mit vier außergewöhnlichen europäischen Jazzmusikern aufgenommen, enthält das Album neun Originalkompositionen, die in spezifischen Ragas verwurzelt und durch Jazzharmonien neu interpretiert sind.",
+      "updatedAt": "2026-03-20 16:25:51"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tkey\tlang\tvalue\tupdatedAt\n7\talbum_description\ten\tEssence of Duality is the debut crossover jazz album by Cologne-based sitarist Hindol Deb. The album explores and crosses the boundaries of jazz and Indian classical music, making aesthetic connections between the two. It is a sincere attempt to move beyond the exotic yet stereotypical image of the sitar in the West, and of Indo-Jazz fusion in particular. The album is the logical result of Hindol's move to Germany in 2015, in search of new sounds and compositional styles.\t2026-03-20 20:05:36\n43\talbum_description\tde\tEssence of Duality ist das Debüt-Crossover-Jazz-Album des in Köln lebenden Sitaristen Hindol Deb, das am 1. Oktober 2021 über Medieval Raga Records veröffentlicht wurde. Das Album erkundet und überschreitet die Grenzen von Jazz und indischer klassischer Musik. In Köln mit vier außergewöhnlichen europäischen Jazzmusikern aufgenommen, enthält das Album neun Originalkompositionen, die in spezifischen Ragas verwurzelt und durch Jazzharmonien neu interpretiert sind.\t2026-03-20 16:25:51\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}
