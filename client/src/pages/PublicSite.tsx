@@ -360,21 +360,21 @@ export default function PublicSite() {
       {/* ── Artist Bio ── */}
       {isSectionVisible("bio") && (
         <section id="bio" className="py-24 px-6 section-divider" style={{background:'oklch(0.06 0.005 60)'}}>
-          <div className="max-w-4xl mx-auto">
-            {/* Portrait — centered */}
-            <div className="flex justify-center mb-10">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+            {/* Portrait — left, vertically centered */}
+            <div className="md:col-span-1 flex justify-center">
               <img
                 src={gc("artist_portrait_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/aIncuEcaLDGVmvny.jpg"}
                 alt="Hindol Deb"
-                className="w-64 md:w-80 aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
-            {/* Text — centered */}
-            <div className="text-center">
+            {/* Text — right two columns */}
+            <div className="md:col-span-2">
               <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Artist", "Der Künstler")}</p>
               <h2 className="font-serif text-4xl font-bold text-cream mb-4">Hindol Deb</h2>
-              <div className="w-10 h-px bg-gold mx-auto mb-6" />
-              <div className="text-cream-dim leading-relaxed space-y-4 text-lg text-left max-w-2xl mx-auto">
+              <div className="w-10 h-px bg-gold mb-6" />
+              <div className="text-cream-dim leading-relaxed space-y-4 text-lg">
                 {artistBio.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
               </div>
               <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer"
