@@ -18,27 +18,32 @@ import AdminStreaming from "./pages/admin/AdminStreaming";
 import AdminRagas from "./pages/admin/AdminRagas";
 import AdminSections from "./pages/admin/AdminSections";
 
+function AdminRouter() {
+  return (
+    <AdminLayout>
+      <Switch>
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/content" component={AdminContent} />
+        <Route path="/admin/tracks" component={AdminTracks} />
+        <Route path="/admin/musicians" component={AdminMusicians} />
+        <Route path="/admin/reviews" component={AdminReviews} />
+        <Route path="/admin/tour" component={AdminTourDates} />
+        <Route path="/admin/gallery" component={AdminGallery} />
+        <Route path="/admin/streaming" component={AdminStreaming} />
+        <Route path="/admin/ragas" component={AdminRagas} />
+        <Route path="/admin/sections" component={AdminSections} />
+        <Route component={NotFound} />
+      </Switch>
+    </AdminLayout>
+  );
+}
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={PublicSite} />
-      <Route path="/admin" nest>
-        <AdminLayout>
-          <Switch>
-            <Route path="/" component={AdminDashboard} />
-            <Route path="/content" component={AdminContent} />
-            <Route path="/tracks" component={AdminTracks} />
-            <Route path="/musicians" component={AdminMusicians} />
-            <Route path="/reviews" component={AdminReviews} />
-            <Route path="/tour" component={AdminTourDates} />
-            <Route path="/gallery" component={AdminGallery} />
-            <Route path="/streaming" component={AdminStreaming} />
-            <Route path="/ragas" component={AdminRagas} />
-            <Route path="/sections" component={AdminSections} />
-            <Route component={NotFound} />
-          </Switch>
-        </AdminLayout>
-      </Route>
+      <Route path="/admin" component={AdminRouter} />
+      <Route path="/admin/:rest*" component={AdminRouter} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

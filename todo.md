@@ -51,5 +51,8 @@
 - [x] Write vitest tests for key API routes (13 tests passing)
 
 ## Phase 6: Delivery
-- [ ] Save checkpoint
-- [ ] Deliver to user
+- [x] Save checkpoint
+- [x] Deliver to user
+
+## Bug Fixes
+- [x] Fix admin routing 404 bug (wouter nest path doubling — switched to flat absolute routes)
