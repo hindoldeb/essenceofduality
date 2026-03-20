@@ -68,3 +68,4 @@
 - [x] Add top padding to hero section so the photo has breathing room at the top
 - [x] Add top padding to hero so musicians' heads are not cropped — shift background-position to top
 - [x] Hero: increase title font size by 5pt more, push text block further down
+- [x] Hero: increase all text sizes (subtitle, quote, buttons, SCROLL) by 10pt
