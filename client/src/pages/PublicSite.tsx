@@ -98,7 +98,7 @@ export default function PublicSite() {
           ? `linear-gradient(to bottom, rgba(5,4,2,0.20) 0%, rgba(5,4,2,0.45) 55%, rgba(5,4,2,0.92) 100%), url(${heroBg}) center/cover no-repeat`
           : `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)` }}
       >
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-24 md:pb-32">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-12 md:pb-16" style={{marginBottom: '0', paddingBottom: '4rem'}}>
           <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-8">
             {t("Hindol Deb Quartet · Cologne, Germany · 2021", "Hindol Deb Quartett · Köln, Deutschland · 2021")}
           </p>
