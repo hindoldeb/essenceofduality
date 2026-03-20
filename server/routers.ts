@@ -97,10 +97,10 @@ export const appRouter = router({
         roleDe: z.string(),
         bioEn: z.string(),
         bioDe: z.string(),
-        imageUrl: z.string().optional(),
+        imageUrl: z.string().nullish(),
         sortOrder: z.number().default(0),
       }))
-      .mutation(({ input }) => upsertMusician(input)),
+      .mutation(({ input }) => upsertMusician({ ...input, imageUrl: input.imageUrl ?? undefined })),
 
     deleteMusician: adminProcedure
       .input(z.object({ id: z.number() }))
