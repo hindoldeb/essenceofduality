@@ -61,3 +61,4 @@
 - [x] Re-add hero background image upload to Admin Site Content and restore hero background in public site
 - [x] Make hero overlay more transparent, reduce h1 size, push title lower
 - [x] Push hero headline and all text further down toward the bottom of the hero section
+- [x] Anchor all hero text to the very bottom of the hero viewport (currently drifting upward)
