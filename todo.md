@@ -74,3 +74,6 @@
 - [x] Hero: increase subtitle/quote/button text by another 10pt (third round)
 - [x] Hero: reduce title (Essence of Duality) by 10pt — text-7xl/9xl → text-6xl/8xl
 - [x] Sync all text content from hindoldeb.github.io/essence-of-duality reference page into CMS database
+- [x] Add thin golden border to all section cards (musicians, tracks, reviews, ragas, tour)
+- [x] Fix footer "Essence of Duality" title to non-italic normal font
+- [x] Style Spotify/Apple Music/YouTube/Buy CD buttons as golden hover tab borders in footer

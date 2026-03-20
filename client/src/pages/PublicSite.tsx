@@ -229,7 +229,7 @@ export default function PublicSite() {
             <div className="w-12 h-px bg-gold/40 mx-auto mb-16" />
             <div className="grid md:grid-cols-2 gap-8">
               {musicians.map((m) => (
-                <div key={m.id} className="flex gap-6 p-6 border border-gold/10 hover:border-gold/30 transition-all bg-black/20">
+                <div key={m.id} className="flex gap-6 p-6 border border-gold/25 hover:border-gold/60 transition-all bg-black/20">
                   {m.imageUrl && (
                     <img src={m.imageUrl} alt={lang === "de" ? m.nameDe : m.nameEn}
                       className="w-20 h-20 object-cover shrink-0 grayscale hover:grayscale-0 transition-all" />
@@ -285,7 +285,7 @@ export default function PublicSite() {
             <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
             <div className="grid md:grid-cols-2 gap-6">
               {reviews.map((r) => (
-                <div key={r.id} className="p-8 border border-gold/15 hover:border-gold/35 transition-all bg-black/20">
+                <div key={r.id} className="p-8 border border-gold/25 hover:border-gold/60 transition-all bg-black/20">
                   <blockquote className="font-body italic text-cream-dim leading-relaxed text-lg mb-6">
                     "{lang === "de" ? r.quoteDe : r.quoteEn}"
                   </blockquote>
@@ -325,7 +325,7 @@ export default function PublicSite() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {ragas.map((r) => (
-                <div key={r.id} className="p-5 border border-gold/15 hover:border-gold/40 transition-all bg-black/20 group">
+                <div key={r.id} className="p-5 border border-gold/25 hover:border-gold/60 transition-all bg-black/20 group">
                   <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-2 group-hover:text-gold/80 transition-colors">{r.ragaName}</p>
                   <p className="font-serif text-lg text-cream mb-3">{lang === "de" ? r.trackTitleDe : r.trackTitleEn}</p>
                   <p className="text-cream-dim text-sm leading-relaxed">{lang === "de" ? r.descriptionDe : r.descriptionEn}</p>
@@ -388,7 +388,7 @@ export default function PublicSite() {
                   </h3>
                   <div className="space-y-3">
                     {regionDates.map((d) => (
-                      <div key={d.id} className="flex items-start gap-6 py-3 border-b border-gold/5 hover:bg-gold/5 transition-all px-3">
+                      <div key={d.id} className="flex items-start gap-6 py-3 border border-gold/20 hover:border-gold/50 transition-all px-3 mb-2 bg-black/10">
                         <span className="font-mono text-xs text-gold/50 shrink-0 w-28 pt-0.5">{d.dateStr}</span>
                         <div className="flex-1 min-w-0">
                           <p className="font-serif text-cream">{lang === "de" ? d.venueDe : d.venueEn}</p>
@@ -413,12 +413,12 @@ export default function PublicSite() {
       {/* ── Footer ── */}
       <footer className="py-16 px-6 border-t border-gold/30 bg-black">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl italic text-gradient-gold mb-2">Essence of Duality</h2>
+          <h2 className="font-serif text-3xl not-italic text-gradient-gold mb-2">Essence of Duality</h2>
           <p className="font-mono text-xs text-gold/40 tracking-widest mb-8">Hindol Deb Quartet · Medieval Raga Records · 2021</p>
-          <div className="flex flex-wrap gap-4 justify-center mb-10">
+          <div className="flex flex-wrap gap-3 justify-center mb-10">
             {streamingLinks.filter(l => l.isActive).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="font-mono text-xs text-cream-dim/50 hover:text-gold transition-colors tracking-wider">
+                className="font-mono text-xs text-cream-dim/60 hover:text-gold border border-transparent hover:border-gold/60 px-4 py-2 tracking-wider transition-all hover:bg-gold/5">
                 {l.platform}
               </a>
             ))}
