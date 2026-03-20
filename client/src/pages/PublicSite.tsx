@@ -111,13 +111,8 @@ export default function PublicSite() {
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-1" />
           <p className="font-body italic text-5xl md:text-6xl text-cream-dim mb-0">{heroSubtitle}</p>
-          <p className="font-body text-cream-dim/70 text-2xl max-w-2xl mx-auto mb-1 italic hidden md:block">"{heroQuote}"</p>
-          <div className="flex justify-center mb-1">
-            <a href="#album" className="px-8 py-3 bg-gold text-black font-mono text-xl font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
-              {t("Discover the Album", "Das Album entdecken")}
-            </a>
-          </div>
-          <div className="flex justify-center mb-4">
+          <p className="font-body text-cream-dim/70 text-2xl max-w-2xl mx-auto mb-2 italic hidden md:block">"{heroQuote}"</p>
+          <div className="flex justify-center gap-4 mb-4">
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
                 className="px-4 py-1 border-2 border-gold/80 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
