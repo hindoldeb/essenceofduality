@@ -59,7 +59,7 @@ export default function PublicSite() {
 
   const albumCover = gc("album_cover_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/xyncoXKeOERiTExc.jpg";
   const heroBg = gc("hero_bg_url");
-  const heroTitle = gc("hero_title") || "Essence of Duality";
+  const heroTitle = gc("hero_title") || "Hindol Deb Quartet";
   const heroSubtitle = gc("hero_subtitle") || t("Where Raga Meets Jazz", "Wo Raga auf Jazz trifft");
   const heroQuote = gc("hero_quote") || t(
     "An exploration of the space between Indian classical music and jazz, where raga and improvisation meet in unexpected and beautiful ways.",
@@ -137,7 +137,7 @@ export default function PublicSite() {
             </div>
             <div>
               <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Album", "Das Album")}</p>
-              <h2 className="font-serif text-5xl font-bold italic text-cream mb-4">Essence of Duality</h2>
+              <h2 className="font-serif text-5xl font-bold text-cream mb-4">Essence of Duality</h2>
               <div className="w-10 h-px bg-gold mb-6" />
               <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
                 <div>
