@@ -106,7 +106,7 @@ export default function PublicSite() {
         }}
       >
         <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-2 md:pb-3" style={{transform: 'translateY(0)'}}>
-          <h1 className="font-serif text-6xl md:text-8xl font-bold leading-tight mb-2 text-gradient-gold whitespace-nowrap">
+          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-2 text-gradient-gold whitespace-nowrap">
             {heroTitle}
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-3" />
