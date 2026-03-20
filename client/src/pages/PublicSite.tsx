@@ -125,7 +125,7 @@ export default function PublicSite() {
 
       {/* ── Album ── */}
       {isSectionVisible("album") && (
-        <section id="album" className="py-24 px-6">
+        <section id="album" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.10 0.012 60)'}}>
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
               <div className="absolute -inset-2 bg-gold/10 rounded-sm blur-xl group-hover:bg-gold/20 transition-all" />
@@ -170,7 +170,7 @@ export default function PublicSite() {
 
       {/* ── Tracklist ── */}
       {isSectionVisible("tracklist") && tracks.length > 0 && (
-        <section id="tracklist" className="py-24 px-6 bg-warm-black">
+        <section id="tracklist" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.07 0.008 60)'}}>
           <div className="max-w-3xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Full Tracklist", "Vollständige Titelliste")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -204,7 +204,7 @@ export default function PublicSite() {
       )}
 
       {/* ── Artist Quote ── */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 border-t border-gold/20" style={{background:'oklch(0.10 0.012 60)'}}>
         <div className="max-w-2xl mx-auto text-center">
           <div className="text-gold/30 text-xs font-mono tracking-[0.5em] mb-8">✦ ✦ ✦</div>
           <blockquote className="font-body italic text-xl md:text-2xl text-cream-dim leading-relaxed mb-6">
@@ -220,7 +220,7 @@ export default function PublicSite() {
 
       {/* ── Musicians ── */}
       {isSectionVisible("musicians") && musicians.length > 0 && (
-        <section id="musicians" className="py-24 px-6 bg-warm-black">
+        <section id="musicians" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.07 0.008 60)'}}>
           <div className="max-w-5xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("The Quartet", "Das Quartett")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -250,7 +250,7 @@ export default function PublicSite() {
 
       {/* ── Gallery ── */}
       {isSectionVisible("gallery") && gallery.length > 0 && (
-        <section id="gallery" className="py-24 px-6">
+        <section id="gallery" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.10 0.012 60)'}}>
           <div className="max-w-6xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Gallery", "Galerie")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -276,7 +276,7 @@ export default function PublicSite() {
 
       {/* ── Press Reviews ── */}
       {isSectionVisible("reviews") && reviews.length > 0 && (
-        <section id="reviews" className="py-24 px-6 bg-warm-black">
+        <section id="reviews" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.07 0.008 60)'}}>
           <div className="max-w-5xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Critical Reception", "Kritische Rezeption")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -310,7 +310,7 @@ export default function PublicSite() {
 
       {/* ── Ragas ── */}
       {isSectionVisible("ragas") && ragas.length > 0 && (
-        <section id="ragas" className="py-24 px-6">
+        <section id="ragas" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.10 0.012 60)'}}>
           <div className="max-w-5xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("The Ragas", "Die Ragas")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -338,7 +338,7 @@ export default function PublicSite() {
 
       {/* ── Artist Bio ── */}
       {isSectionVisible("bio") && (
-        <section id="bio" className="py-24 px-6 bg-warm-black">
+        <section id="bio" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.07 0.008 60)'}}>
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 items-start">
             <div className="md:col-span-1">
               <img
@@ -365,7 +365,7 @@ export default function PublicSite() {
 
       {/* ── Tour Dates ── */}
       {isSectionVisible("tour") && tourDates.length > 0 && (
-        <section id="tour" className="py-24 px-6">
+        <section id="tour" className="py-24 px-6 border-t border-gold/20" style={{background:'oklch(0.10 0.012 60)'}}>
           <div className="max-w-4xl mx-auto">
             <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Tour History", "Tourneegeschichte")}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
@@ -411,7 +411,7 @@ export default function PublicSite() {
       )}
 
       {/* ── Footer ── */}
-      <footer className="py-16 px-6 border-t border-gold/10 bg-black">
+      <footer className="py-16 px-6 border-t border-gold/30 bg-black">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl italic text-gradient-gold mb-2">Essence of Duality</h2>
           <p className="font-mono text-xs text-gold/40 tracking-widest mb-8">Hindol Deb Quartet · Medieval Raga Records · 2021</p>
