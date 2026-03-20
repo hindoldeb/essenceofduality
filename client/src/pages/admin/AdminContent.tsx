@@ -20,6 +20,7 @@ const imageFields = [
   { key: "hero_bg_url", label: "Hero Background Image" },
   { key: "album_cover_url", label: "Album Cover" },
   { key: "artist_portrait_url", label: "Artist Portrait" },
+  { key: "quote_image_url", label: "Quote Section Photo" },
 ];
 
 export default function AdminContent() {
