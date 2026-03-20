@@ -1,0 +1,439 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+import { trpc } from "@/lib/trpc";
+import { Link } from "wouter";
+
+// Helper: get content value by key from array
+function getContent(items: { key: string; lang: string; value: string }[], key: string, lang: string) {
+  return items.find((i) => i.key === key && i.lang === lang)?.value || "";
+}
+
+// Star rating display
+function Stars({ rating }: { rating: number }) {
+  return (
+    <span className="text-gold font-mono text-sm tracking-widest">
+      {"★".repeat(rating)}{"☆".repeat(5 - rating)}
+    </span>
+  );
+}
+
+// Language toggle button
+function LangToggle() {
+  const { lang, setLang } = useLanguage();
+  return (
+    <div className="flex items-center gap-1 bg-black/40 border border-gold/30 rounded-full px-1 py-1">
+      <button
+        onClick={() => setLang("en")}
+        className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all ${
+          lang === "en" ? "bg-gold text-black" : "text-cream-dim hover:text-gold"
+        }`}
+      >EN</button>
+      <button
+        onClick={() => setLang("de")}
+        className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all ${
+          lang === "de" ? "bg-gold text-black" : "text-cream-dim hover:text-gold"
+        }`}
+      >DE</button>
+    </div>
+  );
+}
+
+export default function PublicSite() {
+  const { lang, t } = useLanguage();
+  const { data: contentItems = [] } = trpc.content.getSiteContent.useQuery({ lang });
+  const { data: allContent = [] } = trpc.content.getAllSiteContent.useQuery();
+  const { data: tracks = [] } = trpc.content.getTracks.useQuery();
+  const { data: musicians = [] } = trpc.content.getMusicians.useQuery();
+  const { data: reviews = [] } = trpc.content.getPressReviews.useQuery();
+  const { data: tourDates = [] } = trpc.content.getTourDates.useQuery();
+  const { data: gallery = [] } = trpc.content.getGalleryImages.useQuery();
+  const { data: streamingLinks = [] } = trpc.content.getStreamingLinks.useQuery();
+  const { data: ragas = [] } = trpc.content.getRagaDescriptions.useQuery();
+  const { data: sections = [] } = trpc.content.getSections.useQuery();
+
+  const gc = (key: string) => getContent(allContent, key, lang);
+
+  const isSectionVisible = (key: string) => {
+    const s = sections.find((s) => s.key === key);
+    return s ? s.isVisible : true;
+  };
+
+  const albumCover = gc("album_cover_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/xyncoXKeOERiTExc.jpg";
+  const heroBg = gc("hero_bg_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/PTUsIMhSwCnbPxzQ.jpeg";
+
+  const heroTitle = gc("hero_title") || "Essence of Duality";
+  const heroSubtitle = gc("hero_subtitle") || t("Where Raga Meets Jazz", "Wo Raga auf Jazz trifft");
+  const heroQuote = gc("hero_quote") || t(
+    "An exploration of the space between Indian classical music and jazz, where raga and improvisation meet in unexpected and beautiful ways.",
+    "Eine Erkundung des Raums zwischen indischer klassischer Musik und Jazz, wo Raga und Improvisation auf unerwartete und wunderschöne Weise aufeinandertreffen."
+  );
+  const albumDesc = gc("album_description") || t(
+    "Essence of Duality is the debut crossover jazz album by Cologne-based sitarist Hindol Deb. The album explores and crosses the boundaries of jazz and Indian classical music, making aesthetic connections between the two.",
+    "Essence of Duality ist das Debüt-Crossover-Jazz-Album des in Köln lebenden Sitaristen Hindol Deb. Das Album erkundet und überschreitet die Grenzen von Jazz und indischer klassischer Musik."
+  );
+  const artistBio = gc("artist_bio") || t(
+    "Hindol Deb is an internationally renowned Indian classical sitarist whose artistry is defined by a profound adherence to his traditional heritage and a visionary quest for musical expansion. Representing the celebrated Maihar and Rampur Gharanas, Hindol has established himself as a virtuoso who bridges the ancient spiritual depth of the Raga with the infinite possibilities of global contemporary music.",
+    "Hindol Deb ist ein international renommierter indischer klassischer Sitarist, dessen Kunst durch eine tiefe Verbundenheit mit seinem traditionellen Erbe und eine visionäre Suche nach musikalischer Erweiterung geprägt ist."
+  );
+
+  const platformIcons: Record<string, string> = {
+    spotify: "🎵", "apple music": "🎵", "youtube music": "▶", "buy cd": "💿", "cto music": "💿",
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* ── Navigation ── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
+        <span className="font-mono text-xs text-gold/70 tracking-widest uppercase">Hindol Deb Quartet</span>
+        <div className="flex items-center gap-4">
+          <Link href="/admin" className="text-xs font-mono text-cream-dim hover:text-gold transition-colors">
+            Admin ↗
+          </Link>
+          <LangToggle />
+        </div>
+      </nav>
+
+      {/* ── Hero ── */}
+      <section
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{ background: `linear-gradient(to bottom, rgba(5,4,2,0.55) 0%, rgba(5,4,2,0.75) 60%, rgba(5,4,2,1) 100%), url(${heroBg}) center/cover no-repeat` }}
+      >
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+          <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-8">
+            {t("Hindol Deb Quartet · Cologne, Germany · 2021", "Hindol Deb Quartett · Köln, Deutschland · 2021")}
+          </p>
+          <h1 className="font-serif text-7xl md:text-9xl font-bold leading-none mb-4 text-gradient-gold">
+            {heroTitle.split(" of ")[0]}<br />
+            <span className="italic">of {heroTitle.split(" of ")[1]}</span>
+          </h1>
+          <div className="w-16 h-px bg-gold/40 mx-auto my-6" />
+          <p className="font-body italic text-2xl md:text-3xl text-cream-dim mb-8">{heroSubtitle}</p>
+          <p className="font-body text-cream-dim/80 text-lg max-w-xl mx-auto mb-10 italic">"{heroQuote}"</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="#album" className="px-8 py-3 bg-gold text-black font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
+              {t("Discover the Album", "Das Album entdecken")}
+            </a>
+            {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
+              <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
+                className="px-8 py-3 border border-gold/50 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
+                {t("Listen on Spotify", "Auf Spotify hören")}
+              </a>
+            ))}
+          </div>
+          <div className="mt-16 animate-bounce">
+            <span className="font-mono text-xs text-gold/40 tracking-widest">{t("SCROLL", "SCROLLEN")}</span>
+            <div className="w-px h-12 bg-gold/20 mx-auto mt-2" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Album ── */}
+      {isSectionVisible("album") && (
+        <section id="album" className="py-24 px-6">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-gold/10 rounded-sm blur-xl group-hover:bg-gold/20 transition-all" />
+              <img src={albumCover} alt="Essence of Duality Album Cover"
+                className="relative w-full max-w-sm mx-auto shadow-2xl shadow-gold/20" />
+              <div className="absolute top-3 right-3 bg-gold text-black font-mono text-xs font-bold px-3 py-1 tracking-widest">
+                {t("DEBUT ALBUM", "DEBÜTALBUM")}
+              </div>
+            </div>
+            <div>
+              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Album", "Das Album")}</p>
+              <h2 className="font-serif text-5xl font-bold italic text-cream mb-4">Essence of Duality</h2>
+              <div className="w-10 h-px bg-gold mb-6" />
+              <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
+                <div>
+                  <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-1">{t("Released", "Veröffentlicht")}</p>
+                  <p className="text-cream">{gc("album_release") || "October 1, 2021"}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-1">{t("Genre", "Genre")}</p>
+                  <p className="text-cream">{t("Crossover Jazz / World Music", "Crossover Jazz / Weltmusik")}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-1">{t("Label", "Label")}</p>
+                  <p className="text-cream">{gc("album_label") || "Medieval Raga Records"}</p>
+                </div>
+              </div>
+              <p className="text-cream-dim leading-relaxed mb-8 text-lg">{albumDesc}</p>
+              <div className="flex flex-wrap gap-3">
+                {streamingLinks.filter(l => l.isActive).map(l => (
+                  <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 border border-gold/30 text-gold/80 hover:border-gold hover:text-gold font-mono text-xs tracking-wider transition-all">
+                    <span>{platformIcons[l.platform.toLowerCase()] || "🎵"}</span>
+                    {l.platform}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Tracklist ── */}
+      {isSectionVisible("tracklist") && tracks.length > 0 && (
+        <section id="tracklist" className="py-24 px-6 bg-warm-black">
+          <div className="max-w-3xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Full Tracklist", "Vollständige Titelliste")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("Nine Journeys Between Two Worlds", "Neun Reisen zwischen zwei Welten")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
+            <div className="space-y-0">
+              {tracks.map((track, i) => (
+                <div key={track.id}
+                  className="flex items-center gap-6 py-5 border-b border-gold/10 hover:bg-gold/5 transition-all px-4 group">
+                  <span className="font-mono text-xs text-gold/30 w-6 shrink-0 group-hover:text-gold/60 transition-colors">
+                    {String(track.trackNumber).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-serif text-lg text-cream group-hover:text-gold transition-colors">
+                      {lang === "de" ? track.titleDe : track.titleEn}
+                    </p>
+                    <p className="font-mono text-xs text-gold/50 mt-0.5">
+                      {lang === "de" ? track.ragaDe : track.ragaEn}
+                      {(lang === "de" ? track.subtitleDe : track.subtitleEn) && (
+                        <span className="text-cream-dim/40 ml-2">· {lang === "de" ? track.subtitleDe : track.subtitleEn}</span>
+                      )}
+                    </p>
+                  </div>
+                  <span className="font-mono text-sm text-gold/60 shrink-0">{track.duration}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Artist Quote ── */}
+      <section className="py-20 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="text-gold/30 text-xs font-mono tracking-[0.5em] mb-8">✦ ✦ ✦</div>
+          <blockquote className="font-body italic text-xl md:text-2xl text-cream-dim leading-relaxed mb-6">
+            "{gc("artist_quote") || t(
+              "It started with the duality of two styles of music. On the one hand, my classical Indian background, which I brought with me to Germany, and on the other, music built on harmonies.",
+              "Es begann mit der Dualität zweier Musikstile. Einerseits mein klassisch-indischer Hintergrund, den ich mit nach Deutschland brachte, und andererseits auf Harmonien aufgebaute Musik."
+            )}"
+          </blockquote>
+          <p className="font-mono text-xs text-gold/50 tracking-widest">— Hindol Deb, Qantara.de, 2021</p>
+          <div className="text-gold/30 text-xs font-mono tracking-[0.5em] mt-8">✦ ✦ ✦</div>
+        </div>
+      </section>
+
+      {/* ── Musicians ── */}
+      {isSectionVisible("musicians") && musicians.length > 0 && (
+        <section id="musicians" className="py-24 px-6 bg-warm-black">
+          <div className="max-w-5xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("The Quartet", "Das Quartett")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("Four Voices, One Conversation", "Vier Stimmen, ein Gespräch")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-16" />
+            <div className="grid md:grid-cols-2 gap-8">
+              {musicians.map((m) => (
+                <div key={m.id} className="flex gap-6 p-6 border border-gold/10 hover:border-gold/30 transition-all bg-black/20">
+                  {m.imageUrl && (
+                    <img src={m.imageUrl} alt={lang === "de" ? m.nameDe : m.nameEn}
+                      className="w-20 h-20 object-cover shrink-0 grayscale hover:grayscale-0 transition-all" />
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-1">
+                      {lang === "de" ? m.roleDe : m.roleEn}
+                    </p>
+                    <h3 className="font-serif text-xl text-cream mb-3">{lang === "de" ? m.nameDe : m.nameEn}</h3>
+                    <p className="text-cream-dim text-sm leading-relaxed">{lang === "de" ? m.bioDe : m.bioEn}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Gallery ── */}
+      {isSectionVisible("gallery") && gallery.length > 0 && (
+        <section id="gallery" className="py-24 px-6">
+          <div className="max-w-6xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Gallery", "Galerie")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("On Stage & In the Studio", "Auf der Bühne & im Studio")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {gallery.map((img) => (
+                <div key={img.id} className="relative group overflow-hidden aspect-[4/3]">
+                  <img src={img.imageUrl} alt={lang === "de" ? img.altDe || "" : img.altEn || ""}
+                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+                  {(lang === "de" ? img.captionDe : img.captionEn) && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform">
+                      <p className="font-mono text-xs text-gold/80">{lang === "de" ? img.captionDe : img.captionEn}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Press Reviews ── */}
+      {isSectionVisible("reviews") && reviews.length > 0 && (
+        <section id="reviews" className="py-24 px-6 bg-warm-black">
+          <div className="max-w-5xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Critical Reception", "Kritische Rezeption")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("What the World is Saying", "Was die Welt sagt")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
+            <div className="grid md:grid-cols-2 gap-6">
+              {reviews.map((r) => (
+                <div key={r.id} className="p-8 border border-gold/15 hover:border-gold/35 transition-all bg-black/20">
+                  <blockquote className="font-body italic text-cream-dim leading-relaxed text-lg mb-6">
+                    "{lang === "de" ? r.quoteDe : r.quoteEn}"
+                  </blockquote>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-serif text-gold font-semibold">{lang === "de" ? r.publicationDe : r.publicationEn}</p>
+                      {(lang === "de" ? r.reviewerDe : r.reviewerEn) && (
+                        <p className="font-mono text-xs text-cream-dim/60 mt-0.5">{lang === "de" ? r.reviewerDe : r.reviewerEn}</p>
+                      )}
+                      {(lang === "de" ? r.dateDe : r.dateEn) && (
+                        <p className="font-mono text-xs text-cream-dim/40 mt-0.5">{lang === "de" ? r.dateDe : r.dateEn}</p>
+                      )}
+                    </div>
+                    {r.rating && r.rating > 0 ? <Stars rating={r.rating} /> : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Ragas ── */}
+      {isSectionVisible("ragas") && ragas.length > 0 && (
+        <section id="ragas" className="py-24 px-6">
+          <div className="max-w-5xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("The Ragas", "Die Ragas")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("Ancient Scales, New Conversations", "Alte Skalen, neue Gespräche")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-6" />
+            <p className="text-cream-dim text-center max-w-2xl mx-auto mb-12 text-lg">
+              {gc("ragas_intro") || t(
+                "Each composition on the album is rooted in a specific raga — the melodic framework of Indian classical music.",
+                "Jede Komposition auf dem Album ist in einem bestimmten Raga verwurzelt — dem melodischen Rahmen der indischen klassischen Musik."
+              )}
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {ragas.map((r) => (
+                <div key={r.id} className="p-5 border border-gold/15 hover:border-gold/40 transition-all bg-black/20 group">
+                  <p className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-2 group-hover:text-gold/80 transition-colors">{r.ragaName}</p>
+                  <p className="font-serif text-lg text-cream mb-3">{lang === "de" ? r.trackTitleDe : r.trackTitleEn}</p>
+                  <p className="text-cream-dim text-sm leading-relaxed">{lang === "de" ? r.descriptionDe : r.descriptionEn}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Artist Bio ── */}
+      {isSectionVisible("bio") && (
+        <section id="bio" className="py-24 px-6 bg-warm-black">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 items-start">
+            <div className="md:col-span-1">
+              <img
+                src={gc("artist_portrait_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/aIncuEcaLDGVmvny.jpg"}
+                alt="Hindol Deb"
+                className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Artist", "Der Künstler")}</p>
+              <h2 className="font-serif text-4xl font-bold text-cream mb-4">Hindol Deb</h2>
+              <div className="w-10 h-px bg-gold mb-6" />
+              <div className="text-cream-dim leading-relaxed space-y-4 text-lg">
+                {artistBio.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
+              </div>
+              <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-8 font-mono text-xs text-gold/70 hover:text-gold border-b border-gold/30 hover:border-gold transition-all pb-0.5">
+                hindoldeb.com ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Tour Dates ── */}
+      {isSectionVisible("tour") && tourDates.length > 0 && (
+        <section id="tour" className="py-24 px-6">
+          <div className="max-w-4xl mx-auto">
+            <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3 text-center">{t("Tour History", "Tourneegeschichte")}</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream text-center mb-2">
+              {t("Concerts & Performances", "Konzerte & Auftritte")}
+            </h2>
+            <div className="w-12 h-px bg-gold/40 mx-auto mb-12" />
+            {["germany", "india", "europe", "other"].map((region) => {
+              const regionDates = tourDates.filter((d) => d.region === region);
+              if (!regionDates.length) return null;
+              const regionLabel: Record<string, { en: string; de: string }> = {
+                germany: { en: "Germany", de: "Deutschland" },
+                india: { en: "India Tour", de: "Indien-Tournee" },
+                europe: { en: "Europe", de: "Europa" },
+                other: { en: "International", de: "International" },
+              };
+              return (
+                <div key={region} className="mb-10">
+                  <h3 className="font-mono text-xs text-gold/50 uppercase tracking-widest mb-4 border-b border-gold/10 pb-2">
+                    {lang === "de" ? regionLabel[region].de : regionLabel[region].en}
+                  </h3>
+                  <div className="space-y-3">
+                    {regionDates.map((d) => (
+                      <div key={d.id} className="flex items-start gap-6 py-3 border-b border-gold/5 hover:bg-gold/5 transition-all px-3">
+                        <span className="font-mono text-xs text-gold/50 shrink-0 w-28 pt-0.5">{d.dateStr}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-serif text-cream">{lang === "de" ? d.venueDe : d.venueEn}</p>
+                          <p className="font-mono text-xs text-cream-dim/50 mt-0.5">
+                            {lang === "de" ? d.cityDe : d.cityEn}, {lang === "de" ? d.countryDe : d.countryEn}
+                          </p>
+                        </div>
+                        {d.eventUrl && (
+                          <a href={d.eventUrl} target="_blank" rel="noopener noreferrer"
+                            className="font-mono text-xs text-gold/40 hover:text-gold shrink-0 transition-colors">↗</a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ── Footer ── */}
+      <footer className="py-16 px-6 border-t border-gold/10 bg-black">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-serif text-3xl italic text-gradient-gold mb-2">Essence of Duality</h2>
+          <p className="font-mono text-xs text-gold/40 tracking-widest mb-8">Hindol Deb Quartet · Medieval Raga Records · 2021</p>
+          <div className="flex flex-wrap gap-4 justify-center mb-10">
+            {streamingLinks.filter(l => l.isActive).map(l => (
+              <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
+                className="font-mono text-xs text-cream-dim/50 hover:text-gold transition-colors tracking-wider">
+                {l.platform}
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-6 justify-center text-xs font-mono text-cream-dim/30 mb-6">
+            <a href="https://qantara.de" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">Qantara.de</a>
+            <a href="https://songlines.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">Songlines</a>
+            <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">hindoldeb.com</a>
+          </div>
+          <p className="font-mono text-xs text-cream-dim/20">© 2021–2026 Hindol Deb. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
