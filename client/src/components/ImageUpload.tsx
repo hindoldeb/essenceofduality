@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { Upload, X, Loader2 } from "lucide-react";
@@ -13,6 +13,14 @@ interface ImageUploadProps {
 export default function ImageUpload({ currentUrl, onUploaded, label = "Upload Image", className = "" }: ImageUploadProps) {
   const [preview, setPreview] = useState<string>(currentUrl || "");
   const [uploading, setUploading] = useState(false);
+
+  // Sync preview when parent provides an updated URL (e.g. after data loads)
+  useEffect(() => {
+    if (currentUrl !== undefined && currentUrl !== preview) {
+      setPreview(currentUrl);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUrl]);
   const inputRef = useRef<HTMLInputElement>(null);
   const upload = trpc.admin.uploadImage.useMutation({
     onSuccess: (data) => {
