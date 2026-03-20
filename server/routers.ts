@@ -119,10 +119,10 @@ export const appRouter = router({
         dateEn: z.string().optional(),
         dateDe: z.string().optional(),
         rating: z.number().min(0).max(5).default(0),
-        sourceUrl: z.string().optional(),
+        sourceUrl: z.string().nullish(),
         sortOrder: z.number().default(0),
       }))
-      .mutation(({ input }) => upsertPressReview(input)),
+      .mutation(({ input }) => upsertPressReview({ ...input, sourceUrl: input.sourceUrl ?? undefined })),
 
     deletePressReview: adminProcedure
       .input(z.object({ id: z.number() }))
