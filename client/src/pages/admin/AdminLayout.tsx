@@ -3,7 +3,6 @@ import { getLoginUrl } from "@/const";
 import { Link, useLocation } from "wouter";
 import { Music, Users, Star, MapPin, Image, Radio, BookOpen, LayoutGrid, FileText, BarChart3, LogOut, ExternalLink } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { toast } from "sonner";
 
 const navItems = [
   { path: "/admin", label: "Dashboard", icon: BarChart3, exact: true },
@@ -20,7 +19,10 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { user, loading, isAuthenticated } = useAuth();
-  const [location] = useLocation();
+  // useLocation returns the path relative to the current router base.
+  // We use window.location.pathname directly to get the true absolute path
+  // so active-link detection works correctly regardless of wouter nesting.
+  const absolutePath = typeof window !== "undefined" ? window.location.pathname : "/";
   const logout = trpc.auth.logout.useMutation({
     onSuccess: () => { window.location.href = "/"; },
   });
@@ -44,7 +46,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             Sign In
           </a>
           <div className="mt-6">
-            <Link href="/" className="font-mono text-xs text-gold/40 hover:text-gold transition-colors">← Back to site</Link>
+            <a href="/" className="font-mono text-xs text-gold/40 hover:text-gold transition-colors">← Back to site</a>
           </div>
         </div>
       </div>
@@ -57,7 +59,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="text-center">
           <h1 className="font-serif text-3xl text-cream mb-3">Access Denied</h1>
           <p className="text-cream-dim text-sm mb-6">Your account does not have admin privileges.</p>
-          <Link href="/" className="font-mono text-xs text-gold/40 hover:text-gold transition-colors">← Back to site</Link>
+          <a href="/" className="font-mono text-xs text-gold/40 hover:text-gold transition-colors">← Back to site</a>
         </div>
       </div>
     );
@@ -73,10 +75,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         <nav className="flex-1 py-4 overflow-y-auto">
           {navItems.map((item) => {
-            const isActive = item.exact ? location === item.path : location.startsWith(item.path) && item.path !== "/admin";
+            // Use absolute path from window for reliable active detection
+            const isActive = item.exact
+              ? absolutePath === item.path
+              : absolutePath.startsWith(item.path) && item.path !== "/admin";
             const Icon = item.icon;
             return (
-              <Link key={item.path} href={item.path}>
+              // Use native anchor tags to bypass wouter's base-path prepending entirely
+              <a key={item.path} href={item.path}>
                 <div className={`flex items-center gap-3 px-5 py-2.5 text-sm transition-all cursor-pointer ${
                   isActive
                     ? "bg-gold/10 text-gold border-r-2 border-gold"
@@ -85,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <Icon size={14} className="shrink-0" />
                   <span className="font-mono text-xs">{item.label}</span>
                 </div>
-              </Link>
+              </a>
             );
           })}
         </nav>
