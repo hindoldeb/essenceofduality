@@ -388,7 +388,7 @@ export default function PublicSite() {
                   </h3>
                   <div className="space-y-3">
                     {regionDates.map((d) => (
-                      <div key={d.id} className="flex items-start gap-6 py-3 border border-gold-30 hover:border-gold transition-all px-3 mb-2 bg-black/10">
+                      <div key={d.id} className="flex items-start gap-6 py-3 border border-gold-15 hover:border-gold transition-all px-3 mb-2 bg-black/10">
                         <span className="font-mono text-xs text-gold/50 shrink-0 w-28 pt-0.5">{d.dateStr}</span>
                         <div className="flex-1 min-w-0">
                           <p className="font-serif text-cream">{lang === "de" ? d.venueDe : d.venueEn}</p>
