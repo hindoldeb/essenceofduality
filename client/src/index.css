@@ -162,7 +162,7 @@
   .font-body { font-family: "Cormorant Garamond", Georgia, serif; }
   .font-mono { font-family: "Space Mono", monospace; }
   .text-gradient-gold {
-    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--saffron) 60%, var(--gold-dim) 100%);
+    background: linear-gradient(135deg, oklch(0.68 0.10 68) 0%, oklch(0.60 0.12 55) 60%, oklch(0.52 0.09 68) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
