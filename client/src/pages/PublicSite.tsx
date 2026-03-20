@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
@@ -38,6 +39,7 @@ function LangToggle() {
 }
 
 export default function PublicSite() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
   const { lang, t } = useLanguage();
   const { data: contentItems = [] } = trpc.content.getSiteContent.useQuery({ lang });
   const { data: allContent = [] } = trpc.content.getAllSiteContent.useQuery();
@@ -369,15 +371,23 @@ export default function PublicSite() {
             {[1,2,3,4,5,6].map((n) => {
               const url = gc(`gallery_photo_${n}`);
               return url ? (
-                <div key={n} className="relative w-full overflow-hidden border border-gold-15 hover:border-gold transition-all duration-500 group" style={{paddingBottom:'75%'}}>
+                <button
+                  key={n}
+                  onClick={() => setLightbox(url)}
+                  className="relative w-full overflow-hidden border border-gold-15 hover:border-gold transition-all duration-500 group cursor-zoom-in"
+                  style={{paddingBottom:'75%'}}
+                >
                   <img
                     src={url}
                     alt={`Gallery photo ${n}`}
-                    className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="bg-black/50 border border-gold-30 text-gold font-mono text-xs px-3 py-1 tracking-widest">EXPAND</span>
+                  </div>
+                </button>
               ) : (
-                <div key={n} className="relative w-full border border-dashed border-gold-30 hover:border-gold-60 transition-colors" style={{paddingBottom:'75%'}}>
+                <div key={n} className="relative w-full border border-dashed border-gold-30" style={{paddingBottom:'75%'}}>
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-gold/30">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     <span className="font-mono text-xs tracking-widest uppercase opacity-50">Photo {n}</span>
@@ -388,6 +398,25 @@ export default function PublicSite() {
           </div>
         </div>
       </section>
+      {/* Lightbox */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute top-6 right-8 text-gold/70 hover:text-gold font-mono text-2xl transition-colors"
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+          >✕</button>
+          <img
+            src={lightbox}
+            alt="Gallery"
+            className="max-w-[90vw] max-h-[85vh] object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
       {/* ── Tour Dates ── */}
       {isSectionVisible("tour") && tourDates.length > 0 && (
