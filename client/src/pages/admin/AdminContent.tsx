@@ -32,11 +32,15 @@ export default function AdminContent() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState<string | null>(null);
 
+  // Use a stable serialised key so the effect only runs when the actual data changes,
+  // not every time tRPC returns a new array reference.
+  const contentKey = allContent.map((c) => `${c.key}__${c.lang}__${c.value}`).join("|");
   useEffect(() => {
     const map: Record<string, string> = {};
     allContent.forEach((c) => { map[`${c.key}__${c.lang}`] = c.value; });
     setValues(map);
-  }, [allContent]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contentKey]);
 
   const get = (key: string, lang: string) => values[`${key}__${lang}`] || "";
   const set = (key: string, lang: string, val: string) =>
