@@ -67,3 +67,4 @@
 - [x] Hero: remove "Hindol Deb Quartet · Cologne, Germany · 2021" tagline, increase title font size by 10pt, push all text and SCROLL further down
 - [x] Add top padding to hero section so the photo has breathing room at the top
 - [x] Add top padding to hero so musicians' heads are not cropped — shift background-position to top
+- [x] Hero: increase title font size by 5pt more, push text block further down
