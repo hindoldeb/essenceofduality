@@ -77,3 +77,4 @@
 - [x] Add thin golden border to all section cards (musicians, tracks, reviews, ragas, tour)
 - [x] Fix footer "Essence of Duality" title to non-italic normal font
 - [x] Style Spotify/Apple Music/YouTube/Buy CD buttons as golden hover tab borders in footer
+- [x] Rebuild footer: 3-column layout (Hindol Deb info | LISTEN links | DISCOVER links) + copyright bar

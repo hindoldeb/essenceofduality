@@ -411,24 +411,49 @@ export default function PublicSite() {
       )}
 
       {/* ── Footer ── */}
-      <footer className="py-16 px-6 border-t border-gold/30 bg-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl not-italic text-gradient-gold mb-2">Essence of Duality</h2>
-          <p className="font-mono text-xs text-gold/40 tracking-widest mb-8">Hindol Deb Quartet · Medieval Raga Records · 2021</p>
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
-            {streamingLinks.filter(l => l.isActive).map(l => (
-              <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="font-mono text-xs text-cream-dim/60 hover:text-gold border border-transparent hover:border-gold/60 px-4 py-2 tracking-wider transition-all hover:bg-gold/5">
-                {l.platform}
-              </a>
-            ))}
+      <footer className="pt-16 pb-0 px-6 border-t border-gold/30 bg-black">
+        <div className="max-w-5xl mx-auto">
+          {/* Three-column layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16">
+            {/* Left: Hindol Deb info */}
+            <div>
+              <h2 className="font-serif text-2xl text-cream mb-4">Hindol Deb</h2>
+              <p className="font-body italic text-cream-dim/60 text-sm leading-relaxed">
+                Sitarist · Composer · Educator<br />
+                Bridging Indian Classical Raga with Jazz &amp; World Music<br />
+                Cologne, Germany
+              </p>
+            </div>
+            {/* Center: LISTEN */}
+            <div>
+              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-5">Listen</p>
+              <div className="space-y-3">
+                {streamingLinks.filter(l => l.isActive).map(l => (
+                  <div key={l.id}>
+                    <a href={l.url} target="_blank" rel="noopener noreferrer"
+                      className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">
+                      {l.platform}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Right: DISCOVER */}
+            <div>
+              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-5">Discover</p>
+              <div className="space-y-3">
+                <div><a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">hindoldeb.com</a></div>
+                <div><a href="https://qantara.de/en/article/hindol-deb-where-raga-meets-jazz" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">Qantara.de Review</a></div>
+                <div><a href="https://songlines.co.uk" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">Songlines Review</a></div>
+                <div><a href="https://www.allaboutjazz.com" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">All About Jazz</a></div>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-6 justify-center text-xs font-mono text-cream-dim/30 mb-6">
-            <a href="https://qantara.de" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">Qantara.de</a>
-            <a href="https://songlines.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">Songlines</a>
-            <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold/60 transition-colors">hindoldeb.com</a>
+          {/* Copyright bar */}
+          <div className="border-t border-gold/15 py-5 flex flex-col md:flex-row justify-between gap-2">
+            <p className="font-mono text-xs text-cream-dim/30">© 2021 Hindol Deb · Medieval Raga Records · All rights reserved</p>
+            <p className="font-mono text-xs text-cream-dim/30">Webpage compiled from public sources for informational purposes</p>
           </div>
-          <p className="font-mono text-xs text-cream-dim/20">© 2021–2026 Hindol Deb. All rights reserved.</p>
         </div>
       </footer>
     </div>
