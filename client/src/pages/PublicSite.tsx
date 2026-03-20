@@ -98,17 +98,14 @@ export default function PublicSite() {
           ? `linear-gradient(to bottom, rgba(5,4,2,0.20) 0%, rgba(5,4,2,0.45) 55%, rgba(5,4,2,0.92) 100%), url(${heroBg}) center/cover no-repeat`
           : `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)` }}
       >
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-10 md:pb-16">
-          <p className="font-mono text-xs text-gold/60 tracking-[0.4em] uppercase mb-2">
-            {t("Hindol Deb Quartet · Cologne, Germany · 2021", "Hindol Deb Quartett · Köln, Deutschland · 2021")}
-          </p>
-          <h1 className="font-serif text-3xl md:text-5xl font-bold leading-tight mb-2 text-gradient-gold whitespace-nowrap">
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-4 md:pb-6">
+          <h1 className="font-serif text-4xl md:text-6xl font-bold leading-tight mb-3 text-gradient-gold whitespace-nowrap">
             {heroTitle}
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-3" />
           <p className="font-body italic text-xl md:text-2xl text-cream-dim mb-2">{heroSubtitle}</p>
-          <p className="font-body text-cream-dim/70 text-sm max-w-xl mx-auto mb-4 italic hidden md:block">"{heroQuote}"</p>
-          <div className="flex flex-wrap gap-3 justify-center mb-4">
+          <p className="font-body text-cream-dim/70 text-sm max-w-xl mx-auto mb-5 italic hidden md:block">"{heroQuote}"</p>
+          <div className="flex flex-wrap gap-3 justify-center mb-6">
             <a href="#album" className="px-6 py-2 bg-gold text-black font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold-bright transition-all">
               {t("Discover the Album", "Das Album entdecken")}
             </a>
@@ -119,7 +116,7 @@ export default function PublicSite() {
               </a>
             ))}
           </div>
-          <div className="animate-bounce">
+          <div className="animate-bounce pb-4">
             <span className="font-mono text-xs text-gold/40 tracking-widest">{t("SCROLL", "SCROLLEN")}</span>
             <div className="w-px h-8 bg-gold/20 mx-auto mt-1" />
           </div>
