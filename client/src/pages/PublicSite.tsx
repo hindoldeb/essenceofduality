@@ -110,7 +110,7 @@ export default function PublicSite() {
             {heroTitle}
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-1" />
-          <p className="font-body italic text-4xl md:text-5xl text-cream-dim mb-0">{heroSubtitle}</p>
+          <p className="font-body italic text-4xl md:text-5xl text-cream-dim" style={{marginBottom:'0.5cm'}}>{heroSubtitle}</p>
           <p className="font-body text-cream-dim/70 text-xl max-w-2xl mx-auto mb-2 italic hidden md:block">"{heroQuote}"</p>
           <div className="flex justify-center gap-4 mb-4">
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
