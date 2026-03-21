@@ -155,7 +155,9 @@ export default function PublicSite() {
                   <p className="text-cream">{gc("album_label") || "Medieval Raga Records"}</p>
                 </div>
               </div>
-              <p className="text-cream-dim leading-relaxed mb-8 text-lg">{albumDesc}</p>
+              <div className="text-cream-dim leading-relaxed mb-8 text-lg space-y-4">
+                {albumDesc.split(/\n\n+/).map((para, i) => <p key={i}>{para}</p>)}
+              </div>
               <div className="flex flex-wrap gap-3">
                 {streamingLinks.filter(l => l.isActive).map(l => (
                   <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
