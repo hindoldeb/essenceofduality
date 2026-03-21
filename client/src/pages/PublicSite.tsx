@@ -122,7 +122,7 @@ export default function PublicSite() {
   const heroTitle = gc("hero_title") || "Hindol Deb Quartet";
   const heroSubtitle = gc("hero_subtitle") || t("Where Raga Meets Jazz", "Wo Raga auf Jazz trifft");
   const heroQuote = gc("hero_quote") || t(
-    "An exploration of the space between Indian classical music and jazz, where raga and improvisation meet in unexpected and beautiful ways.",
+    "An exploration of the space between Indian classical music and jazz, where Indian and European aesthetics meet in unexpected and beautiful ways.",
     "Eine Erkundung des Raums zwischen indischer klassischer Musik und Jazz, wo Raga und Improvisation auf unerwartete und wunderschöne Weise aufeinandertreffen."
   );
   const albumDesc = gc("album_description") || t(

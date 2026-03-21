@@ -1,0 +1,20 @@
+{
+  "query": "SELECT `key`, lang, value FROM site_content WHERE `key` = 'hero_quote';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute SELECT `key`, lang, value FROM site_content WHERE `key` = 'hero_quote';",
+  "rows": [
+    {
+      "key": "hero_quote",
+      "lang": "en",
+      "value": "An exploration of the space between Indian classical music and jazz, where raga and improvisation meet in unexpected and beautiful ways."
+    },
+    {
+      "key": "hero_quote",
+      "lang": "de",
+      "value": "Eine Erkundung des Raums zwischen indischer klassischer Musik und Jazz, wo Raga und Improvisation auf unerwartete und wunderschöne Weise aufeinandertreffen."
+    }
+  ],
+  "messages": [],
+  "stdout": "key\tlang\tvalue\nhero_quote\ten\tAn exploration of the space between Indian classical music and jazz, where raga and improvisation meet in unexpected and beautiful ways.\nhero_quote\tde\tEine Erkundung des Raums zwischen indischer klassischer Musik und Jazz, wo Raga und Improvisation auf unerwartete und wunderschöne Weise aufeinandertreffen.\n",
+  "stderr": "",
+  "execution_time_ms": 189
+}
