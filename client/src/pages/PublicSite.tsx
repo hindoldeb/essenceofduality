@@ -38,6 +38,64 @@ function LangToggle() {
   );
 }
 
+function ContactTabs() {
+  const [tab, setTab] = useState<'booking' | 'press'>('booking');
+  return (
+    <div>
+      {/* Tab buttons */}
+      <div className="flex gap-1 mb-4">
+        <button
+          onClick={() => setTab('booking')}
+          className={`font-mono text-xs tracking-widest uppercase px-3 py-1.5 border transition-all ${
+            tab === 'booking'
+              ? 'border-gold text-gold bg-gold/10'
+              : 'border-gold/30 text-cream-dim/50 hover:border-gold/60 hover:text-cream-dim'
+          }`}
+        >
+          Booking
+        </button>
+        <button
+          onClick={() => setTab('press')}
+          className={`font-mono text-xs tracking-widest uppercase px-3 py-1.5 border transition-all ${
+            tab === 'press'
+              ? 'border-gold text-gold bg-gold/10'
+              : 'border-gold/30 text-cream-dim/50 hover:border-gold/60 hover:text-cream-dim'
+          }`}
+        >
+          Press
+        </button>
+      </div>
+      {/* Tab content */}
+      {tab === 'booking' && (
+        <div className="space-y-2">
+          <p className="text-cream-dim/60 text-sm leading-relaxed">
+            {"For concert bookings, festival appearances and live engagements:"}
+          </p>
+          <a
+            href="mailto:booking@hindoldeb.com"
+            className="inline-flex items-center gap-2 font-mono text-sm text-gold/80 hover:text-gold border-b border-gold/30 hover:border-gold transition-all pb-0.5"
+          >
+            booking@hindoldeb.com
+          </a>
+        </div>
+      )}
+      {tab === 'press' && (
+        <div className="space-y-2">
+          <p className="text-cream-dim/60 text-sm leading-relaxed">
+            {"For press enquiries, interviews and media requests:"}
+          </p>
+          <a
+            href="mailto:contact@hindoldeb.com"
+            className="inline-flex items-center gap-2 font-mono text-sm text-gold/80 hover:text-gold border-b border-gold/30 hover:border-gold transition-all pb-0.5"
+          >
+            contact@hindoldeb.com
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function PublicSite() {
   const [lightbox, setLightbox] = useState<string | null>(null);
   const { lang, t } = useLanguage();
@@ -139,7 +197,9 @@ export default function PublicSite() {
             </div>
             <div>
               <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-3">{t("The Album", "Das Album")}</p>
-              <h2 className="font-serif text-5xl font-bold text-cream mb-4">Essence of Duality</h2>
+              <h2 className="font-serif text-5xl font-bold text-cream mb-4">
+                <a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors duration-300">Essence of Duality</a>
+              </h2>
               <div className="w-10 h-px bg-gold mb-6" />
               <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
                 <div>
@@ -495,15 +555,11 @@ export default function PublicSite() {
                 ))}
               </div>
             </div>
-            {/* Right: DISCOVER */}
+            {/* Right: CONTACT */}
             <div>
-              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-5">Discover</p>
-              <div className="space-y-3">
-                <div><a href="https://hindoldeb.com" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">hindoldeb.com</a></div>
-                <div><a href="https://qantara.de/en/article/hindol-deb-where-raga-meets-jazz" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">Qantara.de Review</a></div>
-                <div><a href="https://songlines.co.uk" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">Songlines Review</a></div>
-                <div><a href="https://www.allaboutjazz.com" target="_blank" rel="noopener noreferrer" className="font-body text-cream-dim/70 hover:text-gold transition-colors text-sm">All About Jazz</a></div>
-              </div>
+              <p className="font-mono text-xs text-gold/60 tracking-widest uppercase mb-5">{t("Contact", "Kontakt")}</p>
+              {/* Booking / Press tabs */}
+              <ContactTabs />            
             </div>
           </div>
           {/* Copyright bar */}
