@@ -99,16 +99,17 @@ function ContactTabs() {
 export default function PublicSite() {
   const [lightbox, setLightbox] = useState<string | null>(null);
   const { lang, t } = useLanguage();
-  const { data: contentItems = [] } = trpc.content.getSiteContent.useQuery({ lang });
-  const { data: allContent = [] } = trpc.content.getAllSiteContent.useQuery();
-  const { data: tracks = [] } = trpc.content.getTracks.useQuery();
-  const { data: musicians = [] } = trpc.content.getMusicians.useQuery();
-  const { data: reviews = [] } = trpc.content.getPressReviews.useQuery();
-  const { data: tourDates = [] } = trpc.content.getTourDates.useQuery();
-  const { data: gallery = [] } = trpc.content.getGalleryImages.useQuery();
-  const { data: streamingLinks = [] } = trpc.content.getStreamingLinks.useQuery();
-  const { data: ragas = [] } = trpc.content.getRagaDescriptions.useQuery();
-  const { data: sections = [] } = trpc.content.getSections.useQuery();
+  // Single batched query replaces 9 individual round-trips
+  const { data: pageData } = trpc.content.getPublicPageData.useQuery();
+  const allContent = pageData?.allContent ?? [];
+  const tracks = pageData?.tracks ?? [];
+  const musicians = pageData?.musicians ?? [];
+  const reviews = pageData?.reviews ?? [];
+  const tourDates = pageData?.tourDates ?? [];
+  const gallery = pageData?.gallery ?? [];
+  const streamingLinks = pageData?.streamingLinks ?? [];
+  const ragas = pageData?.ragas ?? [];
+  const sections = pageData?.sections ?? [];
 
   const gc = (key: string) => getContent(allContent, key, lang);
 
@@ -190,6 +191,7 @@ export default function PublicSite() {
             <div className="relative group">
               <div className="absolute -inset-2 bg-gold/10 rounded-sm blur-xl group-hover:bg-gold/20 transition-all" />
               <img src={albumCover} alt="Essence of Duality Album Cover"
+                loading="eager" fetchPriority="high"
                 className="relative w-full max-w-sm mx-auto shadow-2xl shadow-gold/20" />
               <div className="absolute top-3 right-3 bg-gold text-black font-mono text-xs font-bold px-3 py-1 tracking-widest">
                 {t("DEBUT ALBUM", "DEBÜTALBUM")}
@@ -317,6 +319,7 @@ export default function PublicSite() {
                 <div key={m.id} className="flex gap-6 p-6 border border-gold-15 hover:border-gold transition-all bg-black/20">
                   {m.imageUrl && (
                     <img src={m.imageUrl} alt={lang === "de" ? m.nameDe : m.nameEn}
+                      loading="lazy"
                       className="w-20 h-20 object-cover shrink-0 grayscale hover:grayscale-0 transition-all" />
                   )}
                   <div className="min-w-0">
@@ -346,6 +349,7 @@ export default function PublicSite() {
               {gallery.map((img) => (
                 <div key={img.id} className="relative group overflow-hidden aspect-[4/3]">
                   <img src={img.imageUrl} alt={lang === "de" ? img.altDe || "" : img.altEn || ""}
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
                   {(lang === "de" ? img.captionDe : img.captionEn) && (
                     <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform">

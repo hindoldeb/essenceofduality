@@ -54,6 +54,23 @@ export const appRouter = router({
     getStreamingLinks: publicProcedure.query(() => getAllStreamingLinks()),
     getRagaDescriptions: publicProcedure.query(() => getAllRagaDescriptions()),
     getSections: publicProcedure.query(() => getAllSections()),
+
+    // Single batched call for the public page — replaces 10 individual queries
+    getPublicPageData: publicProcedure.query(async () => {
+      const [allContent, tracks, musicians, reviews, tourDates, gallery, streamingLinks, ragas, sections] =
+        await Promise.all([
+          getAllSiteContent(),
+          getAllTracks(),
+          getAllMusicians(),
+          getAllPressReviews(),
+          getAllTourDates(),
+          getAllGalleryImages(),
+          getAllStreamingLinks(),
+          getAllRagaDescriptions(),
+          getAllSections(),
+        ]);
+      return { allContent, tracks, musicians, reviews, tourDates, gallery, streamingLinks, ragas, sections };
+    }),
   }),
 
   // ─── Admin mutations ─────────────────────────────────────────────────────
