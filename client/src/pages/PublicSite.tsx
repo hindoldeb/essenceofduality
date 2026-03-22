@@ -120,7 +120,7 @@ export default function PublicSite() {
 
   const albumCover = gc("album_cover_url") || "https://files.manuscdn.com/user_upload_by_module/session_file/310519663385695563/xyncoXKeOERiTExc.jpg";
   const heroBg = gc("hero_bg_url");
-  const heroTitle = gc("hero_title") || "Hindol Deb Quartet";
+  const heroTitle = gc("hero_title") || "Essence of Duality";
   const heroSubtitle = gc("hero_subtitle") || t("Where Raga Meets Jazz", "Wo Raga auf Jazz trifft");
   const heroQuote = gc("hero_quote") || t(
     "An exploration of the space between Indian classical music and jazz, where Indian and European aesthetics meet in unexpected and beautiful ways.",
@@ -136,14 +136,14 @@ export default function PublicSite() {
   );
 
   const platformIcons: Record<string, string> = {
-    spotify: "🎵", "apple music": "🎵", "youtube music": "▶", "buy cd": "💿", "cto music": "💿",
+    spotify: "🎵", "apple music": "🎵", "youtube music": "▶", "bandcamp": "🎵", "cto music": "💿",
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* ── Navigation ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
-        <span className="font-mono text-sm text-gold/70 tracking-widest uppercase">Hindol Deb Quartet</span>
+        <span className="font-mono text-base text-gold/70 tracking-widest uppercase">Hindol Deb Quartet</span>
         <div className="flex items-center gap-4">
           <Link href="/admin" className="text-xs font-mono text-cream-dim hover:text-gold transition-colors">
             Admin ↗
@@ -167,7 +167,7 @@ export default function PublicSite() {
         }}
       >
         <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-2 md:pb-3" style={{transform: 'translateY(0)'}}>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-0 text-gradient-gold whitespace-nowrap">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-0 text-gradient-gold">
             {heroTitle}
           </h1>
           <div className="w-12 h-px bg-gold/40 mx-auto my-1" />
@@ -223,9 +223,13 @@ export default function PublicSite() {
               <div className="flex flex-wrap gap-3">
                 {streamingLinks.filter(l => l.isActive).map(l => (
                   <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gold-30 text-gold/80 hover:border-gold hover:text-gold font-mono text-xs tracking-wider transition-all">
-                    <span>{platformIcons[l.platform.toLowerCase()] || "🎵"}</span>
-                    {l.platform}
+                    className={`flex items-center gap-2 px-4 py-2 border font-mono text-xs tracking-wider transition-all ${
+                      l.platform.toLowerCase() === 'bandcamp'
+                        ? 'border-gold bg-gold/10 text-gold hover:bg-gold/20 hover:border-gold'
+                        : 'border-gold-30 text-gold/80 hover:border-gold hover:text-gold'
+                    }`}>
+                    <span>{l.platform.toLowerCase() === 'bandcamp' ? '🎵' : (platformIcons[l.platform.toLowerCase()] || '🎵')}</span>
+                    {l.platform.toLowerCase() === 'bandcamp' ? 'Buy on Bandcamp' : l.platform}
                   </a>
                 ))}
               </div>
