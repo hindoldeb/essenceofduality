@@ -268,12 +268,7 @@ export default function PublicSite() {
                 </span>
               )}
             </button>
-            {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
-              <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
-                className="px-4 py-1 border-2 border-gold/80 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
-                {t("Listen on Spotify", "Auf Spotify hören")}
-              </a>
-            ))}
+
           </div>
         </div>
       </section>
