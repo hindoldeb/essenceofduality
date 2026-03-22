@@ -551,8 +551,8 @@ export default function PublicSite() {
                     alt={`Gallery photo ${n}`}
                     className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="bg-black/50 border border-gold-30 text-gold font-mono text-xs px-3 py-1 tracking-widest">EXPAND</span>
+                  <div className="absolute inset-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="bg-black/60 border border-gold/50 text-gold font-mono text-xs px-3 py-1.5 tracking-widest rounded-sm shadow-lg">EXPAND</span>
                   </div>
                 </button>
               ) : (
