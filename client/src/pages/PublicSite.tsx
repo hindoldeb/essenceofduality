@@ -200,7 +200,7 @@ export default function PublicSite() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden w-full">
       {/* Hidden YouTube audio player */}
       <div className="fixed" style={{position:'fixed', left:'-9999px', top:'-9999px', width:'1px', height:'1px', overflow:'hidden'}} aria-hidden="true">
         <div id="yt-audio-player" />
@@ -219,15 +219,20 @@ export default function PublicSite() {
 
       {/* ── Hero ── */}
       <section
-        className="relative overflow-hidden"
+        className="relative w-full"
         style={heroBg ? {
-          height: '100vh',
-          backgroundImage: `linear-gradient(to bottom, rgba(5,4,2,0.45) 0%, rgba(5,4,2,0.60) 50%, rgba(5,4,2,0.92) 100%), url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 5%',
+          height: '100svh',
+          maxWidth: '100vw',
+          overflow: 'hidden',
+          backgroundImage: `linear-gradient(to bottom, rgba(5,4,2,0.35) 0%, rgba(5,4,2,0.55) 50%, rgba(5,4,2,0.92) 100%), url(${heroBg})`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
+          backgroundColor: 'oklch(0.04 0.005 60)',
         } : {
-          height: '100vh',
+          height: '100svh',
+          maxWidth: '100vw',
+          overflow: 'hidden',
           background: `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)`,
         }}
       >
