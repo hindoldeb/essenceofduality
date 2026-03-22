@@ -208,7 +208,7 @@ export default function PublicSite() {
 
       {/* ── Navigation ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
-        <span className="font-mono text-base text-gold/70 tracking-widest uppercase">Hindol Deb Quartet</span>
+        <span className="font-mono text-gold/70 tracking-widest uppercase" style={{fontSize:'25px'}}>Hindol Deb Quartet</span>
         <div className="flex items-center gap-4">
           <Link href="/admin" className="text-xs font-mono text-cream-dim hover:text-gold transition-colors">
             Admin ↗
