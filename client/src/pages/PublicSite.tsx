@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
@@ -98,6 +98,66 @@ function ContactTabs() {
 
 export default function PublicSite() {
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [playerReady, setPlayerReady] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const playerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load YouTube IFrame API
+    if (!(window as any).YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    }
+    const initPlayer = () => {
+      if (!(window as any).YT || !(window as any).YT.Player) return;
+      playerRef.current = new (window as any).YT.Player('yt-audio-player', {
+        videoId: 'G49yYevmD0I',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          loop: 1,
+          playlist: 'G49yYevmD0I',
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (e: any) => {
+            e.target.playVideo();
+            setPlayerReady(true);
+            setIsPlaying(true);
+          },
+          onStateChange: (e: any) => {
+            setIsPlaying(e.data === 1);
+          },
+        },
+      });
+    };
+    if ((window as any).YT && (window as any).YT.Player) {
+      initPlayer();
+    } else {
+      (window as any).onYouTubeIframeAPIReady = initPlayer;
+    }
+    return () => {
+      if (playerRef.current?.destroy) playerRef.current.destroy();
+    };
+  }, []);
+
+  const toggleMute = () => {
+    if (!playerRef.current) return;
+    if (isMuted) {
+      playerRef.current.unMute();
+      playerRef.current.setVolume(80);
+      setIsMuted(false);
+    } else {
+      playerRef.current.mute();
+      setIsMuted(true);
+    }
+  };
   const { lang, t } = useLanguage();
   // Single batched query replaces 9 individual round-trips
   const { data: pageData } = trpc.content.getPublicPageData.useQuery();
@@ -141,6 +201,11 @@ export default function PublicSite() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Hidden YouTube audio player */}
+      <div className="fixed" style={{position:'fixed', left:'-9999px', top:'-9999px', width:'1px', height:'1px', overflow:'hidden'}} aria-hidden="true">
+        <div id="yt-audio-player" />
+      </div>
+
       {/* ── Navigation ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
         <span className="font-mono text-base text-gold/70 tracking-widest uppercase">Hindol Deb Quartet</span>
@@ -173,7 +238,36 @@ export default function PublicSite() {
           <div className="w-12 h-px bg-gold/40 mx-auto my-1" />
           <p className="font-body italic text-4xl md:text-5xl text-cream-dim" style={{marginBottom:'0.5cm'}}>{heroSubtitle}</p>
           <p className="font-body text-cream-dim/70 text-xl max-w-2xl mx-auto mb-2 italic hidden md:block">"{heroQuote}"</p>
-          <div className="flex justify-center gap-4 mb-4">
+          <div className="flex justify-center gap-4 mb-4 items-center">
+            {/* YouTube Music play/unmute button */}
+            <button
+              onClick={toggleMute}
+              title={isMuted ? 'Click to play music' : 'Click to mute'}
+              className="group flex items-center gap-3 px-5 py-2 border-2 border-gold/80 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all"
+            >
+              {/* YouTube icon */}
+              <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              {isMuted ? (
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                  </svg>
+                  {t('Play Music', 'Musik abspielen')}
+                </span>
+              ) : (
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </svg>
+                  {t('Now Playing', 'Läuft gerade')}
+                </span>
+              )}
+            </button>
             {streamingLinks.filter(l => l.isActive && l.platform.toLowerCase().includes("spotify")).map(l => (
               <a key={l.id} href={l.url} target="_blank" rel="noopener noreferrer"
                 className="px-4 py-1 border-2 border-gold/80 text-gold font-mono text-xs font-bold tracking-widest uppercase hover:bg-gold/10 transition-all">
