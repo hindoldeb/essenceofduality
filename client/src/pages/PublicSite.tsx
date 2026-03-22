@@ -222,16 +222,15 @@ export default function PublicSite() {
         className="relative w-full"
         style={heroBg ? {
           height: '100svh',
-          maxWidth: '100vw',
+          width: '100%',
           overflow: 'hidden',
           backgroundImage: `linear-gradient(to bottom, rgba(5,4,2,0.35) 0%, rgba(5,4,2,0.55) 50%, rgba(5,4,2,0.92) 100%), url(${heroBg})`,
-          backgroundSize: 'contain',
-          backgroundPosition: 'center top',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          backgroundColor: 'oklch(0.04 0.005 60)',
         } : {
           height: '100svh',
-          maxWidth: '100vw',
+          width: '100%',
           overflow: 'hidden',
           background: `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)`,
         }}
