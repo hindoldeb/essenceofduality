@@ -216,7 +216,7 @@ export default function PublicSite() {
 
       {/* ── Hero ── */}
       <section
-        className="relative w-full"
+        className="relative w-full mt-16"
         style={heroBg ? {
           height: '100svh',
           width: '100%',
