@@ -232,7 +232,7 @@ export default function PublicSite() {
           background: `radial-gradient(ellipse at 60% 40%, oklch(0.20 0.04 60) 0%, oklch(0.08 0.015 60) 50%, oklch(0.04 0.005 60) 100%)`,
         }}
       >
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-2 md:pb-3" style={{transform: 'translateY(0)'}}>
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-0" style={{transform: 'translateY(0)'}}>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-0 text-gradient-gold">
             {heroTitle}
           </h1>
