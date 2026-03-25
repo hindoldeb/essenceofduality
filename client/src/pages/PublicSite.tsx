@@ -206,17 +206,17 @@ export default function PublicSite() {
         <div id="yt-audio-player" />
       </div>
 
-      {/* ── Navigation ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
-        <span className="font-mono text-gold/70 tracking-widest uppercase" style={{fontSize:'25px'}}>Hindol Deb Quartet</span>
-        <div className="flex items-center gap-4">
+      {/* ── Header Overlay (no nav bar) ── */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 pointer-events-none">
+        <span className="font-mono text-gold/70 tracking-widest uppercase pointer-events-auto" style={{fontSize:'25px'}}>Hindol Deb Quartet</span>
+        <div className="flex items-center gap-4 pointer-events-auto">
           <LangToggle />
         </div>
-      </nav>
+      </div>
 
       {/* ── Hero ── */}
       <section
-        className="relative w-full mt-16"
+        className="relative w-full"
         style={heroBg ? {
           height: '100svh',
           width: '100%',
