@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE site_content SET value = 'Essence of Duality' WHERE `key` = 'hero_title' AND lang = 'en';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Wg62LHv8T9gmqCR.b56787b7e8cc --database CkSftNg6dhe8eA5RvHqPG3 --execute UPDATE site_content SET value = 'Essence of Duality' WHERE `key` = 'hero_title' AND lang = 'en';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 52
+}
